@@ -34,7 +34,7 @@ font pango: Ubuntu 12
     bindsym $mod+Shift+q kill
 
     # launch j4-dmenu-desktop
-    bindsym $mod+d exec j4-dmenu-desktop
+    bindsym $mod+d exec j4-dmenu-desktop --no-generic
 
     # change focus
     bindsym $mod+j focus left
@@ -110,12 +110,13 @@ font pango: Ubuntu 12
     bindsym $mod+Shift+e mode "$mode_system"
 
     # keybindings for the soundbuttons
-    bindsym XF86AudioRaiseVolume     exec amixer set Master 5%+
-    bindsym XF86AudioLowerVolume     exec amixer set Master 5%-
+    bindsym XF86AudioMuteVolume     exec amixer set Master 0% 
+    bindsym XF86AudioRaiseVolume    exec amixer set Master 5%+
+    bindsym XF86AudioLowerVolume    exec amixer set Master 5%-
 
     #keybindings for the screen-brightness
     bindsym XF86MonBrightnessUp     exec xbacklight +5
-    bindsym XF86MonBrightnessDown     exec xbacklight -5
+    bindsym XF86MonBrightnessDown   exec xbacklight -5
 
 
 ###############################################################################
@@ -125,16 +126,16 @@ font pango: Ubuntu 12
 ###############################################################################
 
     #set the workspace's names
-    set $workspace1     "1: "
-    set $workspace2     "2: "
-    set $workspace3     "3: "
+    set $workspace1     "1"
+    set $workspace2     "2"
+    set $workspace3     "3"
     set $workspace4     "4"
     set $workspace5     "5"
     set $workspace6     "6"
     set $workspace7     "7"
     set $workspace8     "8"
     set $workspace9     "9"
-    set $workspace10     "10: ♪"
+    set $workspace10    "10"
 
     # switch to workspace
     bindsym $mod+1 workspace $workspace1
@@ -160,13 +161,6 @@ font pango: Ubuntu 12
     bindsym $mod+Shift+9 move container to workspace $workspace9
     bindsym $mod+Shift+0 move container to workspace $workspace10
 
-    # open specific windows to their workspace
-    # get their class with the command: xprop and do something with them
-    assign [class="jetbrains-idea"] $workspace2
-    assign [class="Firefox"] $workspace3
-
-    assign [class="Spotify"] $workspace10
-
 ###############################################################################
 #
 #    DEFAULT MODES
@@ -181,16 +175,16 @@ mode "resize" {
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
-    bindsym j resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym l resize shrink height 10 px or 10 ppt
-    bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym j           resize shrink width 10 px or 10 ppt
+    bindsym k           resize grow height 10 px or 10 ppt
+    bindsym l           resize shrink height 10 px or 10 ppt
+    bindsym semicolon   resize grow width 10 px or 10 ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left        resize shrink width 10 px or 10 ppt
+    bindsym Down        resize grow height 10 px or 10 ppt
+    bindsym Up          resize shrink height 10 px or 10 ppt
+    bindsym Right       resize grow width 10 px or 10 ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -210,7 +204,7 @@ set $mode system (l)ock, (e)logout, hybrid (s)leeping, (h)ibernate, \
  (q)uick hibernate, (r)eboot, Shift+(s)hutdown
 
 set $sleep notify-send "SYSTEM: Hybrid Sleeping..." \
- systemctl hybrid-sleep, mode "default"
+ && systemctl hybrid-sleep, mode "default"
 
 set $quick_hib notify-send "SYSTEM: **quick** Hibernating **quick**..." \
  && systemctl hibernate, mode "default"
@@ -278,7 +272,7 @@ bar {
 ###############################################################################
 
     # class                 border  background  text    indicator
-    client.focused          #333333 $GREY       $WHITE  $RED
+    client.focused          #RR3333 $RED        $WHITE  $GREEN
     client.focused_inactive #333333 $GREY       #777777 #484e50
     client.unfocused        #333333 $GREY       #777777 $WHITE
     client.urgent           #2f343a #008700     $WHITE  #008700
@@ -308,5 +302,4 @@ for_window [class="^.*"] border pixel 4
     exec --no-startup-id nm-applet
 
     exec_always --no-startup-id feh --bg-scale $WALLPAPER
-    exec_always compton -f
     exec_always udiskie
