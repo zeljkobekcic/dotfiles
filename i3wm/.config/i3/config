@@ -1,3 +1,5 @@
+# vim:filetype=i3
+
 ###############################################################################
 #
 # i3 CONFIG
@@ -24,77 +26,77 @@ font pango: Ubuntu 12
 #
 ###############################################################################
 
-    # Use Mouse+$mod to drag floating windows to their wanted position
-    floating_modifier $mod
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
 
-    # start a terminal
-    bindsym $mod+Return exec i3-sensible-terminal
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
-    # kill focused window
-    bindsym $mod+Shift+q kill
+# kill focused window
+bindsym $mod+Shift+q kill
 
-    # launch j4-dmenu-desktop
-    bindsym $mod+d exec j4-dmenu-desktop --no-generic
+# launch j4-dmenu-desktop
+bindsym $mod+d exec j4-dmenu-desktop --no-generic
 
-    # change focus
-    bindsym $mod+j focus left
-    bindsym $mod+k focus down
-    bindsym $mod+l focus up
-    bindsym $mod+semicolon focus right
+# change focus
+bindsym $mod+j focus left
+bindsym $mod+k focus down
+bindsym $mod+l focus up
+bindsym $mod+semicolon focus right
 
-    # alternatively, you can use the cursor keys:
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
 
-    # move focused window
-    bindsym $mod+Shift+j move left
-    bindsym $mod+Shift+k move down
-    bindsym $mod+Shift+l move up
-    bindsym $mod+Shift+semicolon move right
+# move focused window
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
 
-    # alternatively, you can use the cursor keys:
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
-    # split in horizontal orientation
-    bindsym $mod+h split h
+# split in horizontal orientation
+bindsym $mod+h split h
 
-    # split in vertical orientation
-    bindsym $mod+v split v
+# split in vertical orientation
+bindsym $mod+v split v
 
-    # enter fullscreen mode for the focused container
-    bindsym $mod+f fullscreen toggle
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
 
-    # change container layout (stacked, tabbed, toggle split)
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
 
-    # toggle tiling / floating
-    bindsym $mod+Shift+space floating toggle
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
 
-    # change focus between tiling / floating windows
-    bindsym $mod+space focus mode_toggle
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
 
-    # focus the parent container
-    bindsym $mod+a focus parent
+# focus the parent container
+bindsym $mod+a focus parent
 
-    # focus the child container
-    #bindsym $mod+d focus child
+# focus the child container
+# bindsym $mod+d focus child
 
-    # reload the configuration file
-    bindsym $mod+Shift+c reload
+# reload the configuration file
+# bindsym $mod+Shift+c reload
 
-    # restart i3 inplace
-        #   (preserves your layout/session, can be used to upgrade i3)
-    bindsym $mod+Shift+r restart
+# restart i3 inplace
+    #   (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
 
-    #Enter resize mode
-    bindsym $mod+r mode "resize"
+#Enter resize mode
+bindsym $mod+r mode "resize"
 
 
 ###############################################################################
@@ -103,20 +105,23 @@ font pango: Ubuntu 12
 #
 ###############################################################################
 
-    # make screenshots
-    bindsym Print exec scrot '%Y-%m-%d.jpg' -e 'mv $f ~/Pictures/Screenshots/'
+# make screenshots
+bindsym Print exec scrot '%F--%H-%M-%S.jpg' -e 'mv $f ~/Pictures/screenshots/'
 
-    #Enter the "system-mode"
-    bindsym $mod+Shift+e mode "$mode_system"
+#Enter the "system-mode"
+bindsym $mod+Shift+e mode "$mode_system"
 
-    # keybindings for the soundbuttons
-    bindsym XF86AudioMuteVolume     exec amixer set Master 0% 
-    bindsym XF86AudioRaiseVolume    exec amixer set Master 5%+
-    bindsym XF86AudioLowerVolume    exec amixer set Master 5%-
+# more can be found with xmodmap
 
-    #keybindings for the screen-brightness
-    bindsym XF86MonBrightnessUp     exec xbacklight +5
-    bindsym XF86MonBrightnessDown   exec xbacklight -5
+# keybindings for the soundbuttons
+bindsym XF86AudioMute           exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume    exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume    exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMicMute        exec --no-startup-id amixer set Capture toggle
+
+#keybindings for the screen-brightness
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight +5
+bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5
 
 
 ###############################################################################
@@ -125,41 +130,41 @@ font pango: Ubuntu 12
 #
 ###############################################################################
 
-    #set the workspace's names
-    set $workspace1     "1"
-    set $workspace2     "2"
-    set $workspace3     "3"
-    set $workspace4     "4"
-    set $workspace5     "5"
-    set $workspace6     "6"
-    set $workspace7     "7"
-    set $workspace8     "8"
-    set $workspace9     "9"
-    set $workspace10    "10"
+#set the workspace's names
+set $workspace1     "1"
+set $workspace2     "2"
+set $workspace3     "3"
+set $workspace4     "4"
+set $workspace5     "5"
+set $workspace6     "6"
+set $workspace7     "7"
+set $workspace8     "8"
+set $workspace9     "9"
+set $workspace10    "10"
 
-    # switch to workspace
-    bindsym $mod+1 workspace $workspace1
-    bindsym $mod+2 workspace $workspace2
-    bindsym $mod+3 workspace $workspace3
-    bindsym $mod+4 workspace $workspace4
-    bindsym $mod+5 workspace $workspace5
-    bindsym $mod+6 workspace $workspace6
-    bindsym $mod+7 workspace $workspace7
-    bindsym $mod+8 workspace $workspace8
-    bindsym $mod+9 workspace $workspace9
-    bindsym $mod+0 workspace $workspace10
+# switch to workspace
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
 
-    # move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace $workspace1
-    bindsym $mod+Shift+2 move container to workspace $workspace2
-    bindsym $mod+Shift+3 move container to workspace $workspace3
-    bindsym $mod+Shift+4 move container to workspace $workspace4
-    bindsym $mod+Shift+5 move container to workspace $workspace5
-    bindsym $mod+Shift+6 move container to workspace $workspace6
-    bindsym $mod+Shift+7 move container to workspace $workspace7
-    bindsym $mod+Shift+8 move container to workspace $workspace8
-    bindsym $mod+Shift+9 move container to workspace $workspace9
-    bindsym $mod+Shift+0 move container to workspace $workspace10
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
 
 ###############################################################################
 #
@@ -198,13 +203,11 @@ mode "resize" {
 #
 ###############################################################################
 
-
 # log out prompt
-set $mode system (l)ock, (e)logout, hybrid (s)leeping, (h)ibernate, \
- (q)uick hibernate, (r)eboot, Shift+(s)hutdown
+set $mode system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
 
 set $sleep notify-send "SYSTEM: Hybrid Sleeping..." \
- && systemctl hybrid-sleep, mode "default"
+ && systemctl hybrid-sleep && i3lock-fancy, mode "default"
 
 set $quick_hib notify-send "SYSTEM: **quick** Hibernating **quick**..." \
  && systemctl hibernate, mode "default"
@@ -253,8 +256,7 @@ bar {
         position bottom
 
     colors {
-        separator   $FF0000
-        background  $GREY
+        separator   $FF0000 background  $GREY
         #statusline
 
         #                       border       background   text
@@ -271,11 +273,11 @@ bar {
 #
 ###############################################################################
 
-    # class                 border  background  text    indicator
-    client.focused          #RR3333 $RED        $WHITE  $GREEN
-    client.focused_inactive #333333 $GREY       #777777 #484e50
-    client.unfocused        #333333 $GREY       #777777 $WHITE
-    client.urgent           #2f343a #008700     $WHITE  #008700
+# class                 border  background  text    indicator
+client.focused          #RR3333 $RED        $WHITE  $GREEN
+client.focused_inactive #333333 $GREY       #777777 #484e50
+client.unfocused        #333333 $GREY       #777777 $WHITE
+client.urgent           #2f343a #008700     $WHITE  #008700
 
 
 ###############################################################################
@@ -284,7 +286,7 @@ bar {
 #
 ###############################################################################
 
-smart_gaps true
+# smart_gaps true
 gaps inner 5
 gaps outer 5
 for_window [class="^.*"] border pixel 4
@@ -294,12 +296,15 @@ for_window [class="^.*"] border pixel 4
 # EXEC / EXEC_ALWAYS
 #
 ###############################################################################
-    set $WALLPAPER ~/Pictures/Wallpapers/Wallpaper.jpg
 
-    exec --no-startup-id spotify
-    exec --no-startup-id xfce4-power-manager
-    exec --no-startup-id xrdb ~/.Xresources
-    exec --no-startup-id nm-applet
+set $WALLPAPER ~/Pictures/Wallpapers/Wallpaper.jpg
 
-    exec_always --no-startup-id feh --bg-scale $WALLPAPER
-    exec_always udiskie
+exec --no-startup-id spotify
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id xrdb ~/.Xresources
+exec --no-startup-id nm-applet
+exec --no-startup-id xmodmap ~/.xres/xmodmap/xmodmaprc
+
+exec_always --no-startup-id xrdr auto
+exec_always --no-startup-id feh --bg-scale $WALLPAPER
+exec_always udiskie

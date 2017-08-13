@@ -20,8 +20,10 @@ Plugin 'VundleVim/Vundle.vim'
 "==============================================================================
 
 Plugin 'w0rp/ale'                           " Linting is awesome
+"Plugin 'vim-syntastic/syntastic'
 Plugin 'godlygeek/tabular'                  " Making stuff look nice
-Plugin 'Shougo/neocomplete.vim' 
+"Plugin 'Shougo/neocomplete.vim' 
+"Plugin 'Shougo/neosnippet.vim'
 Plugin 'Shougo/vimproc.vim' 
 Plugin 'scrooloose/nerdtree'                " looks nice and is functional
 Plugin 'vim-airline/vim-airline'            " A nice lightweigt statusbar
@@ -29,7 +31,9 @@ Plugin 'vim-airline/vim-airline-themes'
 
 Plugin 'luochen1990/rainbow'                " This is a nice plugin, and not
                                             " only useful for Lisps. It gives 
-                                            " a nice view on XML e.g. too.  "==============================================================================
+                                            " a nice view on XML e.g. too.  
+
+"==============================================================================
 " PLUGINS FOR HASKELL
 "==============================================================================
 
@@ -47,16 +51,11 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fireplace'
 
 "==============================================================================
-" PLUGINS FOR PYTHON 
-"==============================================================================
-
-Plugin 'vim-scripts/indentpython.vim'
-
-"==============================================================================
 " THEMES
 "==============================================================================
 
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 
 "==============================================================================
 " OTHER SYNTAX FILES
@@ -65,6 +64,12 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'PotatoesMaster/i3-vim-syntax'       " I am using i3 and regulary edit
                                             " my config file. This makes
                                             " things a little bit better :)
+
+"==============================================================================
+" OTHER
+"==============================================================================
+
+Plugin 'fidian/hexmode'
 
 "==============================================================================
 "
@@ -77,13 +82,22 @@ filetype plugin indent on    " required
 " END OF PLUGIN SECTION
 "==============================================================================
 
+
+
+
+
+
+
+
+
+
 "==============================================================================
 " THEME SETTINGS
 "==============================================================================
 
 syntax on
 set background=dark
-colorscheme solarized
+colorscheme gruvbox
 set t_Co=256
 
 "===============================================================================
@@ -101,7 +115,7 @@ if !exists('g:airline_symbols')
       let g:airline_symbols = {}
 endif
 
-" SOURCE: 
+" SOURCE:
 " http://vi.stackexchange.com/questions/3359/how-to-fix-status-bar-symbols-in-airline-plugin
 " Depending on your terminal you should add them
 " unicode symbols
@@ -141,18 +155,18 @@ set cc=80
 set wrap
 
 set autoread
-set showmode 
+set showmode
 set smartcase
 set smarttab
 
-set autoindent 
+set autoindent
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
 set expandtab
 set shiftround
 
-set showmatch " bracket stuff  
+set showmatch " bracket stuff
 
 set mouse=a
 set history=1000
@@ -170,25 +184,19 @@ set hlsearch " know where you are searching
 set cmdheight=1
 
 set backspace=2
-
+         
 "==============================================================================
-" NAVIGATING THROUGH LAYOUTS
-"==============================================================================
-
-" Making it a little bit easier
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-"==============================================================================
-" GHC MOD SETTINGS
+" SYNTASTIC SETTINGS 
 "==============================================================================
 
-map <silent> tw :GhcModTypeInsert<CR>
-map <silent> ts :GhcModSplitFunCase<CR>
-map <silent> tq :GhcModType<CR>
-map <silent> te :GhcModTypeClear<CR>
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "==============================================================================
 " NECO GHC SETTINGS
@@ -214,3 +222,4 @@ vmap al :Tabularize /[\[\\|,]<CR>
 "==============================================================================
 
 let g:rainbow_active = 1
+

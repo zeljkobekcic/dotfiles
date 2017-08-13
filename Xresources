@@ -1,4 +1,0 @@
-! ~/.Xresources
-
-#include ".xres/urxvt"
-#include ".xres/urxvt-solarized-light"

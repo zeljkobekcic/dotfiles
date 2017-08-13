@@ -1,0 +1,4 @@
+! ~/.Xresources
+
+#include ".xres/urxvt"
+#include ".xres/gruvbox-dark.xresources"

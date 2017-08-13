@@ -1,0 +1,3 @@
+# ~/.xinitrc
+
+exec i3

@@ -1,0 +1,8 @@
+! ~/.xres/urxvt
+
+URxvt.saveLines:    2048
+URxvt.scrollBar:    false
+URxvt*font:         xft:Hack :size=14
+URxvt*url-launcher: firefox
+URxvt*cursorColor:  #FF0000
+
