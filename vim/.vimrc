@@ -64,7 +64,7 @@ Plugin 'morhetz/gruvbox'
 Plugin 'PotatoesMaster/i3-vim-syntax'       " I am using i3 and regulary edit
                                             " my config file. This makes
                                             " things a little bit better :)
-
+Plugin 'vim-scripts/octave.vim'
 "==============================================================================
 " OTHER
 "==============================================================================

@@ -48,8 +48,8 @@ alias t='tmux'
 
 # Could not get a version of vim compiled with clipboard so I started using
 # gvim, which has been compiled with the clipboard flag/featuer(?)
-#alias vi='gvim -v'
-#alias vim='gvim -v'
+alias vi='gvim -v'
+alias vim='gvim -v'
 
 #==============================================================================
 # FUNCTIONS
@@ -66,3 +66,4 @@ function newTex() { cp ~/.defaults/latex/default.tex "$(pwd)/$1" }
 #==============================================================================
 
 export PATH=$PATH:/home/zeljko/.cabal/bin
+

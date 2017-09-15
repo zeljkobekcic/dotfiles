@@ -1,0 +1,24 @@
+! default settings
+urxvt.scrollBar:        false
+urxvt.font:             xft:Hack:size=14
+urxvt.saveLines:        10000
+urxvt.secondaryScreen:  1
+urxvt.secondaryScroll:  0
+
+
+! plugins
+urxvt.perl-ext-common:  default, matcher, resize-font
+
+! url-launcher
+urxvt.url-lanucher:     /usr/bin/xdg-open
+urxvt.matcher.button:   1
+urxvt.keysym.C-Delete:  perl:matcher:last
+urxvt.keysym.M-Delete:  perl:matcher:list
+
+! font-resizer
+urxvt.iso14755:         false
+urxvt.iso14755_2:       false
+urxvt.keysym.C-minus:   resize-font:smaller
+urxvt.keysym.C-plus:    resize-font:bigger
+urxvt.keysym.C-equall:  resize-font:reset
+urxvt.keysym.C-question:resize-font:show
