@@ -3,92 +3,42 @@
 "==============================================================================
 
 set nocompatible
-filetype off 
+filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-"==============================================================================
-" PLUGINS
-"==============================================================================
+Plug 'w0rp/ale'
+Plug 'Shougo/vimproc.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'luochen1990/rainbow'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'junegunn/goyo.vim'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'vim-scripts/paredit.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fireplace'
 
-Plugin 'VundleVim/Vundle.vim'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'urso/haskell_syntax.vim'
+Plug 'jvirtanen/vim-octave'
+Plug 'adimit/prolog.vim'
 
-"==============================================================================
-" PLUGINS WHICH I LIKE TO USE
-"==============================================================================
-
-Plugin 'w0rp/ale'                           " Linting is awesome
-"Plugin 'vim-syntastic/syntastic'
-Plugin 'godlygeek/tabular'                  " Making stuff look nice
-"Plugin 'Shougo/neocomplete.vim' 
-"Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/vimproc.vim' 
-Plugin 'scrooloose/nerdtree'                " looks nice and is functional
-Plugin 'vim-airline/vim-airline'            " A nice lightweigt statusbar
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'luochen1990/rainbow'                " This is a nice plugin, and not
-                                            " only useful for Lisps. It gives 
-                                            " a nice view on XML e.g. too.  
-
-"==============================================================================
-" PLUGINS FOR HASKELL
-"==============================================================================
-
-Plugin 'urso/haskell_syntax.vim'
-Plugin 'eagletmt/ghcmod-vim'                
-Plugin 'eagletmt/neco-ghc'
-
-"==============================================================================
-" PLUGINS FOR CLOJURE
-"==============================================================================
-
-Plugin 'vim-scripts/paredit.vim'            " Lisps without these plugins? 
-                                            " You don't want to do that
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fireplace'
-
-"==============================================================================
-" THEMES
-"==============================================================================
-
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'morhetz/gruvbox'
-
-"==============================================================================
-" OTHER SYNTAX FILES
-"==============================================================================
-
-Plugin 'PotatoesMaster/i3-vim-syntax'       " I am using i3 and regulary edit
-                                            " my config file. This makes
-                                            " things a little bit better :)
-Plugin 'vim-scripts/octave.vim'
 "==============================================================================
 " OTHER
 "==============================================================================
 
-Plugin 'fidian/hexmode'
+Plug 'altercation/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'fidian/hexmode'
 
-"==============================================================================
-"
-"==============================================================================
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
+filetype plugin indent on
 
 "==============================================================================
 " END OF PLUGIN SECTION
 "==============================================================================
-
-
-
-
-
-
-
-
 
 
 "==============================================================================
@@ -97,7 +47,7 @@ filetype plugin indent on    " required
 
 syntax on
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox 
 set t_Co=256
 
 "===============================================================================
@@ -107,7 +57,7 @@ set t_Co=256
 set laststatus=2
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='solarized'
+let g:airline_theme='gruvbox'
 
 let g:airline_powerline_fonts = 1
 
@@ -184,9 +134,9 @@ set hlsearch " know where you are searching
 set cmdheight=1
 
 set backspace=2
-         
+
 "==============================================================================
-" SYNTASTIC SETTINGS 
+" SYNTASTIC SETTINGS
 "==============================================================================
 
 set statusline+=%#warningmsg#
@@ -199,27 +149,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 "==============================================================================
-" NECO GHC SETTINGS
-"==============================================================================
-
-let g:haskellmode_completion_ghc = 0
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
-
-"==============================================================================
-" TABULAR SETTINGS
-"==============================================================================
-
-let g:haskell_tabular = 1
-
-vmap a= :Tabularize /=<CR>
-vmap a; :Tabularize /::<CR>
-vmap a- :Tabularize /-><CR>
-vmap a, :Tabularize /<-<CR>
-vmap al :Tabularize /[\[\\|,]<CR>
-
-"==============================================================================
 " ACTIVATING THE RAINBOW PARENTHESES
 "==============================================================================
 
 let g:rainbow_active = 1
-

@@ -65,5 +65,3 @@ function newTex() { cp ~/.defaults/latex/default.tex "$(pwd)/$1" }
 # PATHS
 #==============================================================================
 
-export PATH=$PATH:/home/zeljko/.cabal/bin
-
