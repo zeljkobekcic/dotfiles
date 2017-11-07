@@ -11,6 +11,11 @@
 ! Modified: Sat Oct 22 2016 03:12:10 PDT -0700
 !-------------------------------------------------------------------------------
 
+rofi.fuzzy:             true
+rofi.glob:              false
+rofi.regex:             false
+rofi.levenshtein-sort:  true
+
 ! Enable the extended coloring options
 rofi.color-enabled: true
 

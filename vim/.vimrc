@@ -19,6 +19,7 @@ Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fireplace'
+Plug 'tmhedberg/SimpylFold'
 
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'urso/haskell_syntax.vim'
@@ -153,3 +154,12 @@ let g:syntastic_check_on_wq = 0
 "==============================================================================
 
 let g:rainbow_active = 1
+
+"==============================================================================
+" CUSTOM KEYBINDINGS FOR IMPROVED STUFF 
+"==============================================================================
+
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>

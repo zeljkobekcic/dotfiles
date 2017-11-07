@@ -8,9 +8,9 @@ Hi! Here are my dotfiles and these are 'managed' with GNU Stow.
 * tmux
 * zsh
 * zprezto
-* xrdr (xrandr wrapper)
-* things in my i3
-* of course i3
-* know with rofi instead of (j4-)dmenu
-* and GNU Stow
-* and a lot of other funny stuff :)
+* xrdr
+* things in my i3wm config
+* [i3wm](https://github.com/i3/i3)
+* [rofi](https://github.com/DaveDavenport/rofi)
+* [todo.txt-cli](https://github.com/todotxt/todo.txt-cli)
+* GNU Stow

@@ -38,7 +38,7 @@ bindsym $mod+Return     	exec $term
 bindsym $mod+Shift+q    	kill
 
 # launch rofi
-bindsym $mod+d          	exec rofi -show run
+bindsym $mod+d          	exec rofi -show run -matching fuzzy
 
 # change focus
 bindsym $mod+j        		focus left
@@ -126,7 +126,7 @@ bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight +5
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5
 
 # Toggle TouchPad
-bindsym $mod+XF86Tools          exec --no-startup-id ~/.scripts/toogle_touchpad.sh
+bindsym XF86Tools               exec ~/.scripts/toggle_touchpad.sh
 
 ###############################################################################
 #
