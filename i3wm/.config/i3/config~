@@ -20,7 +20,7 @@ set $mod Mod4
 #
 ###############################################################################
 
-font pango: Hack
+font pango: Ubuntu 12
 
 ###############################################################################
 #
@@ -213,12 +213,12 @@ bindsym $mod+Shift+e mode "$mode_system"
 set $mode system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
 
 set $sleep notify-send "SYSTEM: Hybrid Sleeping..." \
- && systemctl hybrid-sleep && bash ~/scripts/lock.sh -l, mode "default"
+ && systemctl hybrid-sleep && i3lock, mode "default"
 
 set $quick_hib notify-send "SYSTEM: **quick** Hibernating **quick**..." \
  && systemctl hibernate, mode "default"
 
-set $hibernate bash ~/scripts/lock.sh -l && notify-send "SYSTEM: Hibernating..." \
+set $hibernate i3lock-fancy && notify-send "SYSTEM: Hibernating..." \
  && systemctl hibernate, mode "default"
 
 set $reboot notify-send "SYSTEM: Rebooting..." && systemctl reboot
@@ -226,7 +226,7 @@ set $shutdown notify-send "SYSTEM: Powering off..." \
  && systemctl poweroff
 
 mode "$mode_system" {
-    bindsym l      	exec bash ~/scripts/lock.sh -l, mode "default"
+    bindsym l      	exec i3lock-fancy, mode "default"
     bindsym e      	exec i3-msg exit
     bindsym s      	exec $sleep
     bindsym q      	exec $quick_hib
@@ -261,7 +261,7 @@ set $darkgray 	#1d2021
 ###############################################################################
 
 bar {
-    font pango: Hack 12
+    font pango: Hack
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
         position bottom
 
@@ -298,7 +298,7 @@ client.urgent           $red        $red        $white      $red        $red
 
 # smart_gaps true
 #gaps inner 5
-#gaps outer 
+#gaps outer 5
 #for_window [class="^.*"] border pixel 4
 
 ###############################################################################
@@ -321,11 +321,8 @@ exec urxvtd
 ###############################################################################
 
 set $WALLPAPER ~/Pictures/Wallpapers/Wallpaper.jpg
-set $SCREENSAVER ~/Pictures/Screensaver/Screensaver.jpg
-
-exec_always --no-startup-id xrdr auto
 exec_always --no-startup-id feh --bg-scale $WALLPAPER
-exec_always --no-startup-id bash ~/scripts/lock.sh --update $SCREENSAVER
+exec_always --no-startup-id xrdr auto
 
 ###############################################################################
 #

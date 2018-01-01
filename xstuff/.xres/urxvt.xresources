@@ -1,4 +1,12 @@
-! default settings
+
+
+Xft.lcdfilter:  lcddefault
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintslight
+
 urxvt.cursorColor:      #FF0000
 urxvt.cursorColor2:     #282828
 urxvt.cursorUnderline:  false
@@ -7,7 +15,8 @@ urxvt.cursorBlink:      false
 urxvt.urgentOnBell:     true
 urxvt.scrollBar:        false
 urxvt.font:             xft:Hack:size=14
-urxvt.saveLines:        5000
+
+rxvt.saveLines:        5000
 urxxvt.mouseWheelScrollPage: false
 urxvt.secondaryScreen:  true
 urxvt.secondaryScroll:  false
