@@ -2,66 +2,114 @@
 # .ZSHRC
 #==============================================================================
 
-#{{{ PREZTO STUFF
+#if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+#  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+#fi
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-    source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 
-# FIXING THE PROBLEM THAT I COULD NOT DISPLAY 256 COLOR SCHEMES IN TMUX
-# IT LOOKS LIKE THESE LINES ARE FIXING THIS PROBLEM FOR EVERY (?) TERMINAL
-# WOULD BE HAPPY ABOUT A VERIFICATION ABOUT THIS.
-# TESTED SO FAR THE XFCE4, GNOME, KDE TERMINALS AND URXVT
-if [[ $TERM ==  "screen" ]] ;
-then
-    TERM="screen-256color"
-fi
-
-# VIM IS LOVE, VIM IS LIFE
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
-
-if [ -e /usr/bin/vimx ]; then alias vim='/usr/bin/vimx'; fi
-
-#}}}
 
 #==============================================================================
 # ALIASES
 #==============================================================================
 
-# CLIPBOARD STUFF
-alias setclip="xclip -selection c"
-alias getclip="xclip -selection clipboard -o"
+alias setclip='xclip -selection c'
+alias getclip='xclip -selection clipboard -o'
 
-# HANDY ALIASES/FUNCTIONS TO MAKE THINGS LESS PAINFULL
-alias la="ls -a"
-function laG() { ls -a | grep "$1" }
+alias ls='exa' # [ exa > ls ]
+alias la='ls -a'
 
-# USING VIM TOO OFTEN
-alias :q="exit"
-
-# UPATE STUFF FROM THE AUR
 alias yaourt-update='yaourt -Syyu --aur'
 
-# AND USING TMUX TOO OFTEN
-alias t='tmux'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
-# Could not get a version of vim compiled with clipboard so I started using
-# gvim, which has been compiled with the clipboard flag/featuer(?)
-alias vi='gvim -v'
-alias vim='gvim -v'
+alias jshell='/usr/lib/jvm/java-9-openjdk/bin/jshell'
+
+alias t='todo.sh'
+
+alias jup='jupyter notebook'
 
 #==============================================================================
 # FUNCTIONS
 #==============================================================================
 
-# BECAUSE CREATING GITIGNOREFILES WAS NEVER THAT EASY
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
-# MAKING IT EASIER TO WRITE LATEX
-function newTex() { cp ~/.defaults/latex/default.tex "$(pwd)/$1" }
+function lagrep() { 
+    if   [ $# -eq 1 ]; then; ls -a | grep "$1";
+    elif [ $# -eq 2 ]; then; ls -a "$1" | grep "$2"
+    else ls -a
+    fi
+}
+
+function mkcd() {
+    if [ $# -eq 1 ]; then;
+        mkdir -p "$1"
+        cd "$1"
+    else
+        echo "You need to provide one argument" 
+    fi
+}
+
 
 #==============================================================================
 # PATHS
 #==============================================================================
 
+PATH=$PATH:"~/.scripts"
+
+#==============================================================================
+# MKVIRTUALENV
+#==============================================================================
+
+export WORKON_HOME=~/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source /usr/bin/virtualenvwrapper.sh
+
+#==============================================================================
+# ZSH HISTORY
+#==============================================================================
+
+HISTFILE="$HOME/.zhistory"
+HISTSIZE=10000
+SAVEHIST=10000
+
+setopt SHARE_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_SPACE
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+
+#==============================================================================
+# ZPLUGINS
+#==============================================================================
+
+source ~/.zplug/init.zsh
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
+zplug load --verbose
+
+#==============================================================================
+#
+#==============================================================================
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=4"
+bindkey '^ ' autosuggest-accept
+
+#==============================================================================
+#
+#==============================================================================
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
