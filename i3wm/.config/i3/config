@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-set $term urxvtc
+set $term st 
 
 ###############################################################################
 #
@@ -32,51 +32,51 @@ font pango: Hack
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return     	exec $term
+bindsym $mod+Return         exec $term
 
 # kill focused window
-bindsym $mod+Shift+q    	kill
+bindsym $mod+Shift+q        kill
 
-# launch rofi
-bindsym $mod+d          	exec rofi -show run -matching fuzzy
+# launch dmenu 
+bindsym $mod+d              exec dmenu_run -i
 
 # change focus
-bindsym $mod+j        		focus left
-bindsym $mod+k        		focus down
-bindsym $mod+l        		focus up
-bindsym $mod+semicolon		focus right
+bindsym $mod+j              focus left
+bindsym $mod+k              focus down
+bindsym $mod+l              focus up
+bindsym $mod+semicolon      focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left 		focus left
-bindsym $mod+Down 		focus down
-bindsym $mod+Up   		focus up
-bindsym $mod+Right		focus right
+bindsym $mod+Left           focus left
+bindsym $mod+Down           focus down
+bindsym $mod+Up             focus up
+bindsym $mod+Right          focus right
 
 # move focused window
-bindsym $mod+Shift+j		move left
-bindsym $mod+Shift+k		move down
-bindsym $mod+Shift+l		move up
+bindsym $mod+Shift+j            move left
+bindsym $mod+Shift+k            move down
+bindsym $mod+Shift+l            move up
 bindsym $mod+Shift+semicolon    move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left    	move left
-bindsym $mod+Shift+Down	   	move down
-bindsym $mod+Shift+Up      	move up
-bindsym $mod+Shift+Right   	move right
+bindsym $mod+Shift+Left        move left
+bindsym $mod+Shift+Down        move down
+bindsym $mod+Shift+Up          move up
+bindsym $mod+Shift+Right       move right
 
 # split in horizontal orientation
-bindsym $mod+h                  split h
+bindsym $mod+h                 split h
 
 # split in vertical orientation
-bindsym $mod+v                  split v
+bindsym $mod+v                 split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f                  fullscreen toggle
+bindsym $mod+f                 fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
-bindsym $mod+w          	layout tabbed
-bindsym $mod+e	                layout toggle split
+bindsym $mod+w                  layout tabbed
+bindsym $mod+e                  layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space        floating toggle
@@ -88,7 +88,7 @@ bindsym $mod+space              focus mode_toggle
 bindsym $mod+a                  focus parent
 
 # focus the child container
-# bindsym $mod+d                  focus child
+ bindsym $mod+Shift+a           focus child
 
 # reload the configuration file
 # bindsym $mod+Shift+c            reload
@@ -100,6 +100,8 @@ bindsym $mod+Shift+r            restart
 #Enter resize mode
 bindsym $mod+r                  mode "resize"
 
+
+
 ###############################################################################
 #
 #    CUSTOM KEYBINDINGS
@@ -107,12 +109,10 @@ bindsym $mod+r                  mode "resize"
 ###############################################################################
 
 # Make screenshots
-bindsym Print                   exec scrot '%F--%H-%M-%S.jpg' -e 'mv $f ~/Pictures/screenshots/'
+bindsym Print                   exec --no-startup-id scrot '%F--%H-%M-%S.jpg' -e 'mv $f ~/Pictures/screenshots/'
 
 # Start terminal with tmux
-bindsym $mod+Shift+Return       exec $term -e tmux
-# Start matlab in an terminal
-bindsym $mod+m                  exec $term -e octave --no-gui
+bindsym $mod+Shift+Return       exec --no-startup-id $term -e tmux
 
 # More can be found with xmodmap
 # Keybindings for the soundbuttons
@@ -127,6 +127,24 @@ bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5
 
 # Toggle TouchPad
 bindsym XF86Tools               exec ~/.scripts/toggle_touchpad.sh
+
+###############################################################################
+#
+#    DROP DOWN TERMINAL
+#    Thanks to @Luke Smith (https://github.com/LukeSmithxyz)
+#
+###############################################################################
+
+bindsym $mod+u [instance="dropdown"] scratchpad show; \
+                [instance="dropdown"] move position center
+
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] sticky enable
+for_window [instance="dropdown"] resize set 1000 600
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] border pixel 20
+
+exec $term -n dropdown -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
 
 ###############################################################################
 #
@@ -147,28 +165,28 @@ set $ws9     "9"
 set $ws10    "10"
 
 # switch to workspace
-bindsym $mod+1  	workspace $ws1
-bindsym $mod+2  	workspace $ws2
-bindsym $mod+3  	workspace $ws3
-bindsym $mod+4  	workspace $ws4
-bindsym $mod+5  	workspace $ws5
-bindsym $mod+6  	workspace $ws6
-bindsym $mod+7  	workspace $ws7
-bindsym $mod+8  	workspace $ws8
-bindsym $mod+9  	workspace $ws9
-bindsym $mod+0  	workspace $ws10
+bindsym $mod+1      workspace $ws1
+bindsym $mod+2      workspace $ws2
+bindsym $mod+3      workspace $ws3
+bindsym $mod+4      workspace $ws4
+bindsym $mod+5      workspace $ws5
+bindsym $mod+6      workspace $ws6
+bindsym $mod+7      workspace $ws7
+bindsym $mod+8      workspace $ws8
+bindsym $mod+9      workspace $ws9
+bindsym $mod+0      workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1	move container to workspace $ws1
-bindsym $mod+Shift+2	move container to workspace $ws2
-bindsym $mod+Shift+3	move container to workspace $ws3
-bindsym $mod+Shift+4	move container to workspace $ws4
-bindsym $mod+Shift+5	move container to workspace $ws5
-bindsym $mod+Shift+6	move container to workspace $ws6
-bindsym $mod+Shift+7	move container to workspace $ws7
-bindsym $mod+Shift+8	move container to workspace $ws8
-bindsym $mod+Shift+9	move container to workspace $ws9
-bindsym $mod+Shift+0	move container to workspace $ws10
+bindsym $mod+Shift+1    move container to workspace $ws1
+bindsym $mod+Shift+2    move container to workspace $ws2
+bindsym $mod+Shift+3    move container to workspace $ws3
+bindsym $mod+Shift+4    move container to workspace $ws4
+bindsym $mod+Shift+5    move container to workspace $ws5
+bindsym $mod+Shift+6    move container to workspace $ws6
+bindsym $mod+Shift+7    move container to workspace $ws7
+bindsym $mod+Shift+8    move container to workspace $ws8
+bindsym $mod+Shift+9    move container to workspace $ws9
+bindsym $mod+Shift+0    move container to workspace $ws10
 
 ###############################################################################
 #
@@ -210,31 +228,35 @@ mode "resize" {
 bindsym $mod+Shift+e mode "$mode_system"
 
 # log out prompt
-set $mode system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
+set $mode_system system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
 
-set $sleep notify-send "SYSTEM: Hybrid Sleeping..." \
- && systemctl hybrid-sleep && bash ~/scripts/lock.sh -l, mode "default"
-
-set $quick_hib notify-send "SYSTEM: **quick** Hibernating **quick**..." \
- && systemctl hibernate, mode "default"
-
-set $hibernate bash ~/scripts/lock.sh -l && notify-send "SYSTEM: Hibernating..." \
- && systemctl hibernate, mode "default"
-
-set $reboot notify-send "SYSTEM: Rebooting..." && systemctl reboot
-set $shutdown notify-send "SYSTEM: Powering off..." \
- && systemctl poweroff
+set $sleep      systemctl hybrid-sleep && ./scripts/lock.sh -l, mode "default"
+set $quick_hib  systemctl hibernate, mode "default"
+set $hibernate  bash ~/scripts/lock.sh -l && systemctl hibernate, mode "default"
+set $reboot     systemctl reboot
+set $shutdown   systemctl poweroff
 
 mode "$mode_system" {
-    bindsym l      	exec bash ~/scripts/lock.sh -l, mode "default"
-    bindsym e      	exec i3-msg exit
-    bindsym s      	exec $sleep
-    bindsym q      	exec $quick_hib
-    bindsym h      	exec $hibernate
-    bindsym r      	exec $reboot
-    bindsym Shift+s	exec $shutdown
+    bindsym l          exec i3lock, mode "default"
+    bindsym e          exec i3-msg exit
+    bindsym s          exec --no-startup-id $sleep
+    bindsym q          exec $quick_hib
+    bindsym h          exec $hibernate
+    bindsym r          exec $reboot
+    bindsym Shift+s    exec $shutdown
     bindsym Return      mode "default"
     bindsym Escape      mode "default"
+}
+
+set $mode_dmenu (c)lipmenu, (p)assmenu
+
+bindsym $mod+Shift+d mode "$mode_dmenu"
+mode "$mode_dmenu" {
+    bindsym c exec bash ~/.scripts/dmenu_scripts/clipmenu/clipmenu; mode "default" 
+    bindsym p exec bash ~/.scripts/dmenu_scripts/passmenu; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
 }
 
 ###############################################################################
@@ -244,15 +266,15 @@ mode "$mode_system" {
 #
 ###############################################################################
 
-set $bg     	#282828
-set $red    	#cc241d
-set $green  	#98971a
-set $yellow 	#d79921
-set $blue   	#458588
-set $purple 	#b16286
-set $aqua   	#689d68
-set $gray 	#a89984
-set $darkgray 	#1d2021
+set $bg         #282828
+set $red        #cc241d
+set $green      #98971a
+set $yellow     #d79921
+set $blue       #458588
+set $purple     #b16286
+set $aqua       #689d68
+set $gray       #a89984
+set $darkgray   #1d2021
 
 ###############################################################################
 #
@@ -263,7 +285,7 @@ set $darkgray 	#1d2021
 bar {
     font pango: Hack 12
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-        position bottom
+    position bottom 
 
     colors {
         separator   $FF0000
@@ -285,7 +307,7 @@ bar {
 ###############################################################################
 
 # class                 border      backgr      text        indicator   child_brdr
-client.focused          $blue       $blue       $darkgray   $purple     $darkgray
+client.focused          $darkgray   $blue       $darkgray   $purple     $yellow
 client.focused_inactive $darkgray   $darkgray   $yellow     $purple     $darkgray
 client.unfocused        $darkgray   $darkgray   $yellow     $purple     $darkgray
 client.urgent           $red        $red        $white      $red        $red
@@ -298,8 +320,8 @@ client.urgent           $red        $red        $white      $red        $red
 
 # smart_gaps true
 #gaps inner 5
-#gaps outer 
-#for_window [class="^.*"] border pixel 4
+#gaps outer
+for_window [class="^.*"] border pixel 2
 
 ###############################################################################
 #
@@ -307,7 +329,6 @@ client.urgent           $red        $red        $white      $red        $red
 #
 ###############################################################################
 
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id nm-applet
 exec --no-startup-id xmodmap ~/.xres/xmodmap/xmodmaprc
@@ -321,11 +342,7 @@ exec urxvtd
 ###############################################################################
 
 set $WALLPAPER ~/Pictures/Wallpapers/Wallpaper.jpg
-set $SCREENSAVER ~/Pictures/Screensaver/Screensaver.jpg
-
-exec_always --no-startup-id xrdr auto
 exec_always --no-startup-id feh --bg-scale $WALLPAPER
-exec_always --no-startup-id bash ~/scripts/lock.sh --update $SCREENSAVER
 
 ###############################################################################
 #

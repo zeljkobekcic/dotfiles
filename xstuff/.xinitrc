@@ -1,4 +1,6 @@
 # ~/.xinitrc
 
+
+setxkbmap eu
+xmodmap ~/.xres/xmodmap/xmodmaprc
 exec i3
-# exec startxfce4

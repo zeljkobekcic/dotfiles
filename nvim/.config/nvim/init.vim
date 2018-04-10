@@ -9,21 +9,16 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-surround'
 Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'adimit/prolog.vim'
-
-Plug 'nvie/vim-flake8'
-Plug 'Valloric/YouCompleteMe'
-
-Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'soli/prolog-vim'
 
 call plug#end()
 filetype plugin indent on
@@ -32,10 +27,10 @@ filetype plugin indent on
 " THEME SETTINGS 
 "==============================================================================
 
-syntax on
+syntax enable
 set background=dark
-colorscheme gruvbox 
-set t_Co=256
+colorscheme solarized
+let g:lightline={'colorscheme' : 'solarized'}
 
 "==============================================================================
 " BASIC SETTINGS FOR VIM
@@ -63,7 +58,7 @@ set shiftwidth=4
 set expandtab
 set shiftround
 
-set showmatch " bracket stuff
+set showmatch
 
 set mouse=a
 set history=1000
@@ -99,4 +94,8 @@ nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
 " PLUGIN SETTINGS 
 "==============================================================================
 
-source ~/.vimrc_plugin_settings
+"==============================================================================
+" ACTIVATING THE RAINBOW PARENTHESES
+"==============================================================================
+
+let g:rainbow_active = 1

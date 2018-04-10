@@ -1,5 +1,4 @@
 ! ~/.Xresources
 
 #include ".xres/urxvt.xresources"
-#include ".xres/gruvbox-dark.xresources"
-#include ".xres/rofi-gruvbox-dark.xresources"
+#include ".xres/urxvt-solarized-dark.xresources"
