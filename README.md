@@ -3,14 +3,16 @@
 Hi! Here are my dotfiles and these are 'managed' with GNU Stow.
 
 ## What am I using?
-* [Vim](http://www.vim.org/)
+* [NeoVim](https://www.neovim.io)
 * [VimPlug](https://github.com/junegunn/vim-plug)
 * [tmux](https://github.com/tmux/tmux)
-* [zsh](http://www.zsh.org/)
-* [prezto](https://github.com/sorin-ionescu/prezto)
+* [zsh](https://www.zsh.org)
+* [zplug](https://github.com/zplug/zplug)
 * [xrdr](https://github.com/pschmitt/xrdr)
-* things in my i3wm config
+* [pass](https://www.passwordstore.org)
 * [i3wm](https://github.com/i3/i3)
-* [rofi](https://github.com/DaveDavenport/rofi)
+* [st](https://st.suckless.org)
+* [dmenu](https://tools.suckless.org/dmenu/)
 * [todo.txt-cli](https://github.com/todotxt/todo.txt-cli)
 * [GNU Stow](https://www.gnu.org/software/stow/)
+* A lot of other stuff which I do not want to list here.
