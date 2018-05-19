@@ -18,7 +18,8 @@ alias setclip='xclip -selection c'
 alias getclip='xclip -selection clipboard -o'
 
 alias ls='exa' # [ exa > ls ]
-alias la='ls -a'
+alias la='exa -a'
+alias ll='exa -al'
 
 alias yaourt-update='yaourt -Syyu --aur'
 
@@ -29,6 +30,7 @@ alias vim='nvim'
 alias jshell='/usr/lib/jvm/java-9-openjdk/bin/jshell'
 
 alias t='todo.sh'
+alias z='zathura'
 
 alias jup='jupyter notebook'
 
@@ -55,11 +57,19 @@ function mkcd() {
 }
 
 
+
 #==============================================================================
-# PATHS
+# SCRIPTS 
 #==============================================================================
 
-PATH=$PATH:"~/.scripts"
+source ~/.scripts/work.sh
+
+#==============================================================================
+# MKVIRTUALENV
+#==============================================================================
+
+PATH=$PATH:~/.gem/ruby/2.5.0/bin
+
 
 #==============================================================================
 # MKVIRTUALENV
@@ -68,6 +78,11 @@ PATH=$PATH:"~/.scripts"
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/bin/virtualenvwrapper.sh
+
+#==============================================================================
+# MAKING EXA/LS BEAUTIFUL WITH SOLARIZED COLORS
+#==============================================================================
+eval `dircolors ~/.dircolors`
 
 #==============================================================================
 # ZSH HISTORY
@@ -93,7 +108,8 @@ zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 zplug load --verbose
 
@@ -113,3 +129,4 @@ bindkey '^[[B' history-substring-search-down
 
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+

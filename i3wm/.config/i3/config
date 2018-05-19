@@ -91,7 +91,7 @@ bindsym $mod+a                  focus parent
  bindsym $mod+Shift+a           focus child
 
 # reload the configuration file
-# bindsym $mod+Shift+c            reload
+ bindsym $mod+Shift+c            reload
 
 # restart i3 inplace
 #   (preserves your layout/session, can be used to upgrade i3)
@@ -144,7 +144,7 @@ for_window [instance="dropdown"] resize set 1000 600
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 20
 
-exec $term -n dropdown -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
+exec_always $term -n 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
 
 ###############################################################################
 #
@@ -230,20 +230,12 @@ bindsym $mod+Shift+e mode "$mode_system"
 # log out prompt
 set $mode_system system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
 
-set $sleep      systemctl hybrid-sleep && ./scripts/lock.sh -l, mode "default"
-set $quick_hib  systemctl hibernate, mode "default"
-set $hibernate  bash ~/scripts/lock.sh -l && systemctl hibernate, mode "default"
-set $reboot     systemctl reboot
-set $shutdown   systemctl poweroff
-
 mode "$mode_system" {
-    bindsym l          exec i3lock, mode "default"
-    bindsym e          exec i3-msg exit
-    bindsym s          exec --no-startup-id $sleep
-    bindsym q          exec $quick_hib
-    bindsym h          exec $hibernate
-    bindsym r          exec $reboot
-    bindsym Shift+s    exec $shutdown
+    bindsym l           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh lock
+    bindsym e           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh exit 
+    bindsym s           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh suspend 
+    bindsym r           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh reboot 
+    bindsym Shift+s     mode "default", exec --no-startup-id ~/.scripts/i3exit.sh shutdown
     bindsym Return      mode "default"
     bindsym Escape      mode "default"
 }
@@ -283,12 +275,12 @@ set $darkgray   #1d2021
 ###############################################################################
 
 bar {
-    font pango: Hack 12
+    font pango: Hack 12, FontAwesome 13
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
     position bottom 
 
     colors {
-        separator   $FF0000
+        separator   $FFFFFF
         background  $bg
         statusline  $yellow
 
@@ -329,11 +321,10 @@ for_window [class="^.*"] border pixel 2
 #
 ###############################################################################
 
-exec --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id nm-applet
-exec --no-startup-id xmodmap ~/.xres/xmodmap/xmodmaprc
-exec udiskie
-exec urxvtd
+exec --no-startup-id udiskie
+exec --no-startup-id dropbox
+exec --no-startup-id compton
 
 ###############################################################################
 #
@@ -343,6 +334,7 @@ exec urxvtd
 
 set $WALLPAPER ~/Pictures/Wallpapers/Wallpaper.jpg
 exec_always --no-startup-id feh --bg-scale $WALLPAPER
+exec_always --no-startup-id xrdr auto
 
 ###############################################################################
 #
