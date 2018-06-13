@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+selected=$(ls ~/.screenlayout | dmenu "$@")
+
+echo $selected 
+
+[[ -n $selected ]] || exit
+
+bash ~/.screenlayout/$selected
+feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg

@@ -20,7 +20,7 @@ set $mod Mod4
 #
 ###############################################################################
 
-font pango: Hack
+font pango: Fira Code 
 
 ###############################################################################
 #
@@ -240,12 +240,13 @@ mode "$mode_system" {
     bindsym Escape      mode "default"
 }
 
-set $mode_dmenu (c)lipmenu, (p)assmenu
+set $mode_dmenu (c)lipmenu, (p)assmenu, (s)creenmenu
 
 bindsym $mod+Shift+d mode "$mode_dmenu"
 mode "$mode_dmenu" {
     bindsym c exec bash ~/.scripts/dmenu_scripts/clipmenu/clipmenu; mode "default" 
     bindsym p exec bash ~/.scripts/dmenu_scripts/passmenu; mode "default"
+    bindsym s exec bash ~/.scripts/dmenu_scripts/screenmenu; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -275,7 +276,7 @@ set $darkgray   #1d2021
 ###############################################################################
 
 bar {
-    font pango: Hack 12, FontAwesome 13
+    font pango: Fira Code 12, FontAwesome 13
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
     position bottom 
 
