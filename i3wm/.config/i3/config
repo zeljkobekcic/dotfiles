@@ -244,9 +244,19 @@ set $mode_dmenu (c)lipmenu, (p)assmenu, (s)creenmenu
 
 bindsym $mod+Shift+d mode "$mode_dmenu"
 mode "$mode_dmenu" {
-    bindsym c exec bash ~/.scripts/dmenu_scripts/clipmenu/clipmenu; mode "default" 
     bindsym p exec bash ~/.scripts/dmenu_scripts/passmenu; mode "default"
     bindsym s exec bash ~/.scripts/dmenu_scripts/screenmenu; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+m mode "Move workspace"
+mode "Move workspace" {
+    bindsym j move workspace to output left; mode "default"
+    bindsym k move workspace to output down; mode "default"
+    bindsym l move workspace to output up; mode "default"
+    bindsym semicolon move workspace to output right; mode "default"
 
     bindsym Return mode "default"
     bindsym Escape mode "default"

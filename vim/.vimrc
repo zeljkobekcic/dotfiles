@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe'
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
 
 "if has('nvim')
 "    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
@@ -110,6 +111,8 @@ let g:ale_sign_warning = '__'
 let g:rainbow_active = 1
 
 let g:deoplete#enable_at_startup = 1
+
+let g:pymode_python = 'python3'
 
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
