@@ -68,13 +68,6 @@ source ~/.scripts/work.sh
 # MKVIRTUALENV
 #==============================================================================
 
-PATH=$PATH:~/.gem/ruby/2.5.0/bin
-
-
-#==============================================================================
-# MKVIRTUALENV
-#==============================================================================
-
 export WORKON_HOME=~/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source /usr/bin/virtualenvwrapper.sh
@@ -82,6 +75,7 @@ source /usr/bin/virtualenvwrapper.sh
 #==============================================================================
 # MAKING EXA/LS BEAUTIFUL WITH SOLARIZED COLORS
 #==============================================================================
+#
 eval `dircolors ~/.dircolors`
 
 #==============================================================================
@@ -114,14 +108,14 @@ zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 zplug load --verbose
 
 #==============================================================================
-#
+# ZSH SYNTAX HIGHLIGHTING
 #==============================================================================
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=4"
 bindkey '^ ' autosuggest-accept
 
 #==============================================================================
-#
+# ZSH HISTORY SUBSTRING SEARCH STUFF
 #==============================================================================
 
 bindkey '^[[A' history-substring-search-up

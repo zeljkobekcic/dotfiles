@@ -21,6 +21,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Valloric/YouCompleteMe'
 Plug 'python-mode/python-mode', { 'branch': 'develop' }
+Plug 'bling/vim-bufferline'
+Plug 'udalov/kotlin-vim'
 
 "if has('nvim')
 "    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
@@ -83,22 +85,21 @@ set wildmenu
 set magic
 set hlsearch 
 
-set cmdheight=1
-
+set laststatus=2
+set noshowmode
 "==============================================================================
 " CUSTOM KEYBINDINGS
 "==============================================================================
 
 " switching between splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-W><C-j>
+nnoremap <C-k> <C-W><C-k>
+nnoremap <C-l> <C-W><C-l>
+nnoremap <C-h> <C-W><C-h>
 
-" resizing splits
-nnoremap <silent> <Leader>+ :exe "resize " . (winheight(0) * 3/2)<CR>
-nnoremap <silent> <Leader>- :exe "resize " . (winheight(0) * 2/3)<CR>
-
+nnoremap gb :bnext<CR>
+nnoremap gB :bprevious<CR>
+nnoremap <leader>b :CtrlPBuffer<CR>
 map <C-n> :NERDTreeToggle<CR>
 
 "==============================================================================
@@ -109,8 +110,6 @@ let g:ale_sign_error = '->'
 let g:ale_sign_warning = '__'
 
 let g:rainbow_active = 1
-
-let g:deoplete#enable_at_startup = 1
 
 let g:pymode_python = 'python3'
 

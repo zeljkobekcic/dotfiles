@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-set $term st 
+set $term kitty 
 
 ###############################################################################
 #
@@ -144,7 +144,7 @@ for_window [instance="dropdown"] resize set 1000 600
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 20
 
-exec_always $term -n 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
+exec_always $term --name 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
 
 ###############################################################################
 #
@@ -240,10 +240,11 @@ mode "$mode_system" {
     bindsym Escape      mode "default"
 }
 
-set $mode_dmenu (c)lipmenu, (p)assmenu, (s)creenmenu
+set $mode_dmenu (b)ookmarkmenu, (p)assmenu, (s)creenmenu
 
 bindsym $mod+Shift+d mode "$mode_dmenu"
 mode "$mode_dmenu" {
+    bindsym b exec bash ~/.scripts/dmenu_scripts/bookmarkmenu; mode "default"
     bindsym p exec bash ~/.scripts/dmenu_scripts/passmenu; mode "default"
     bindsym s exec bash ~/.scripts/dmenu_scripts/screenmenu; mode "default"
 
@@ -251,8 +252,9 @@ mode "$mode_dmenu" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+m mode "Move workspace"
-mode "Move workspace" {
+set $move_mode move workspace (using jkl;)
+bindsym $mod+m mode "$move_mode"
+mode "$move_mode" {
     bindsym j move workspace to output left; mode "default"
     bindsym k move workspace to output down; mode "default"
     bindsym l move workspace to output up; mode "default"

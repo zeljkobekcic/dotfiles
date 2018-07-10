@@ -16,15 +16,19 @@ TO_BE_ADDED="${3}"
 OLD_IFS=$IFS
 IFS=","
 
-content=`cat $ENPASS_CSV | grep "$TO_BE_ADDED"`
+content=$(cat $ENPASS_CSV | grep -i "$TO_BE_ADDED")
 tags=($content)
 username=''
 password=''
 name=${tags[0]}
 
+echo $tags
+echo $name
+echo $content
+
 for (( i=1; i<${#tags[@]}; i++ ))
 do
-    if [ ${tags[$i]} == "\"Username\"" ]
+    if [ ${tags[$i]} == "\"Username\"" ] || [ ${tags[$i]} == "\"Email\"" ]
     then
         i=$i+1
         username=${tags[$i]}
@@ -38,5 +42,13 @@ do
 
 done
 
-(echo "${password:1:-1}"; echo "login: ${username:1:-1}")  | \
-    pass insert --multiline "www/$SERVICE"
+echo $username
+echo $password
+
+echo [ -e $password ]
+if [ ! -z $password ] && [ ! -z $username ]
+then
+    (echo "${password:1:-1}"; echo "login: ${username:1:-1}")  | pass insert --multiline "www/$SERVICE"
+else
+    echo "Could not find match for $SERVICE"
+fi
