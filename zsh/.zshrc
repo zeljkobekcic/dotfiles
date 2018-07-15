@@ -6,8 +6,8 @@
 #  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 #fi
 
-export EDITOR=/usr/bin/vim
-export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
 
 
 #==============================================================================
@@ -23,9 +23,9 @@ alias ll='exa -al'
 
 alias yaourt-update='yaourt -Syyu --aur'
 
-alias v='vim'
-alias vi='vim'
-alias vim='vim'
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
 
 alias jshell='/usr/lib/jvm/java-9-openjdk/bin/jshell'
 

@@ -296,8 +296,8 @@ bar {
         separator   $FFFFFF
         background  $bg
         statusline  $yellow
-
-        #                   border      background  text
+#
+#        #                   border      background  text
         focused_workspace   $aqua       $aqua       $darkgray
         inactive_workspace  $darkgray   $darkgray   $yellow
         active_workspace    $darkgray   $darkgray   $yellow
