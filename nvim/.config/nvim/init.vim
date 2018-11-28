@@ -7,23 +7,39 @@ filetype off
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'w0rp/ale'
+
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'itchyny/lightline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'dhruvasagar/vim-table-mode'
-Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/paredit.vim'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-"Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'altercation/vim-colors-solarized'
+" Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-surround'
+" Plug 'PotatoesMaster/i3-vim-syntax'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'python-mode/python-mode', { 'branch': 'develop' }
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'bling/vim-bufferline'
-Plug 'udalov/kotlin-vim'
+" Plug 'tmhedberg/SimpylFold'
+" Plug 'vim-scripts/BufOnly.vim'
+" Plug 'xolox/vim-notes'
+" Plug 'xolox/vim-misc'
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+Plug 'zchee/deoplete-jedi'
+Plug 'morhetz/gruvbox'
+
+let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 filetype plugin indent on
@@ -34,12 +50,15 @@ filetype plugin indent on
 
 syntax enable
 set background=dark
-colorscheme solarized
-let g:lightline={'colorscheme' : 'solarized'}
+set termguicolors
+colorscheme gruvbox
+let g:lightline={'colorscheme' : 'gruvbox'}
 
 "==============================================================================
 " BASIC SETTINGS FOR VIM
 "==============================================================================
+
+let g:python3_host_prog = '/home/zeljko/.virtualenvs/neovim3/bin/python3'
 
 set shell=/bin/zsh
 
@@ -62,6 +81,7 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set shiftround
+set encoding=UTF-8
 
 set showmatch
 
@@ -81,24 +101,21 @@ set hlsearch
 set laststatus=2
 set noshowmode
 
+set hidden
+set confirm
 "==============================================================================
 " CUSTOM KEYBINDINGS
 "==============================================================================
 
-" switching between splits
-nnoremap <C-j> <C-W><C-j>
-nnoremap <C-k> <C-W><C-k>
-nnoremap <C-l> <C-W><C-l>
-nnoremap <C-h> <C-W><C-h>
-
 nnoremap gb :bnext<CR>
 nnoremap gB :bprevious<CR>
-nnoremap <leader>b :CtrlPBuffer<CR>
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <leader><space> :CtrlPBuffer<CR>
+map <C-f> :NERDTreeToggle<CR>
 
 " source: http://vimcasts.org/episodes/neovim-terminal-mappings/
 if has('nvim')
   " Terminal mode:
+  tnoremap <M-[> <c-\><c-n>
   tnoremap <M-h> <c-\><c-n><c-w>h
   tnoremap <M-j> <c-\><c-n><c-w>j
   tnoremap <M-k> <c-\><c-n><c-w>k
@@ -124,10 +141,14 @@ endif
 " PLUGIN SETTINGS 
 "==============================================================================
 
+
 let g:ale_sign_error = '->'
 let g:ale_sign_warning = '__'
 
 let g:rainbow_active = 1
+
+let g:SimpylFold_fold_import = 0
+let b:SimpylFold_fold_import = 0
 
 let g:pymode_python = 'python3'
 

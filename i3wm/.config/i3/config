@@ -4,7 +4,7 @@
 #
 ###############################################################################
 
-set $term kitty 
+set $term xfce4-terminal
 
 ###############################################################################
 #
@@ -38,7 +38,7 @@ bindsym $mod+Return         exec $term
 bindsym $mod+Shift+q        kill
 
 # launch dmenu 
-bindsym $mod+d              exec dmenu_run -i
+bindsym $mod+d              exec rofi -show run -matching fuzzy
 
 # change focus
 bindsym $mod+j              focus left
@@ -144,7 +144,7 @@ for_window [instance="dropdown"] resize set 1000 600
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 20
 
-exec_always $term --name 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
+exec_always kitty --name 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
 
 ###############################################################################
 #
@@ -300,7 +300,7 @@ bar {
 #        #                   border      background  text
         focused_workspace   $aqua       $aqua       $darkgray
         inactive_workspace  $darkgray   $darkgray   $yellow
-        active_workspace    $darkgray   $darkgray   $yellow
+        active_workspace    $blue       $blue       $darkgray
         urgent_workspace    $red        $red        $bg
     }
 }
@@ -326,7 +326,7 @@ client.urgent           $red        $red        $white      $red        $red
 # smart_gaps true
 #gaps inner 5
 #gaps outer
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 3
 
 ###############################################################################
 #
@@ -337,7 +337,6 @@ for_window [class="^.*"] border pixel 2
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
 exec --no-startup-id dropbox
-exec --no-startup-id compton
 
 ###############################################################################
 #
@@ -345,9 +344,9 @@ exec --no-startup-id compton
 #
 ###############################################################################
 
+exec_always --no-startup-id xrdr auto
 set $WALLPAPER ~/Pictures/Wallpapers/Wallpaper.jpg
 exec_always --no-startup-id feh --bg-scale $WALLPAPER
-exec_always --no-startup-id xrdr auto
 
 ###############################################################################
 #

@@ -32,11 +32,15 @@ alias jshell='/usr/lib/jvm/java-9-openjdk/bin/jshell'
 alias t='todo.sh'
 alias z='zathura'
 
-alias jup='jupyter notebook'
-
 #==============================================================================
 # FUNCTIONS
 #==============================================================================
+
+function keyboard-layout() { setxkbmap -layout 'eu' -option caps:escape }
+# I flashed the keyboard so that caps lock works as escape, so I can enjoy
+# a good keyboard layout on other systems too
+function tada68() { setxbmap -layout 'eu' }
+
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
 
@@ -56,7 +60,10 @@ function mkcd() {
     fi
 }
 
-
+function sshrpi() {
+    ip=$(cat /var/lib/misc/dnsmasq.leases | grep 'raspberrypi' | awk '{ print $3 }')
+    ssh pi@$ip
+}
 
 #==============================================================================
 # SCRIPTS 
@@ -75,7 +82,7 @@ source /usr/bin/virtualenvwrapper.sh
 #==============================================================================
 # MAKING EXA/LS BEAUTIFUL WITH SOLARIZED COLORS
 #==============================================================================
-#
+
 eval `dircolors ~/.dircolors`
 
 #==============================================================================
