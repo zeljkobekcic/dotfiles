@@ -104,9 +104,10 @@ setopt HIST_IGNORE_ALL_DUPS
 #==============================================================================
 
 source ~/.zplug/init.zsh
+
+zplug "zdharma/fast-syntax-highlighting"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "mafredri/zsh-async", from:github
 #zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
@@ -131,3 +132,9 @@ bindkey '^[[B' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
+
+#==============================================================================
+# SPACESHIP THEME
+#==============================================================================
+
+SPACESHIP_BATTERY_SHOW=false

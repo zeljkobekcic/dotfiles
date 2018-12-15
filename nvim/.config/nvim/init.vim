@@ -16,17 +16,11 @@ Plug 'dhruvasagar/vim-table-mode'
 " Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/paredit.vim'
 " Plug 'tpope/vim-fugitive'
-" Plug 'tpope/vim-surround'
-" Plug 'PotatoesMaster/i3-vim-syntax'
-" Plug 'altercation/vim-colors-solarized'
+Plug 'tpope/vim-surround'
 Plug 'ctrlpvim/ctrlp.vim'
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'python-mode/python-mode', { 'branch': 'develop' }
 Plug 'bling/vim-bufferline'
-" Plug 'tmhedberg/SimpylFold'
-" Plug 'vim-scripts/BufOnly.vim'
-" Plug 'xolox/vim-notes'
-" Plug 'xolox/vim-misc'
+Plug 'vim-pandoc/vim-pandoc'
+Plug 'vim-pandoc/vim-pandoc-syntax'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -103,6 +97,7 @@ set noshowmode
 
 set hidden
 set confirm
+
 "==============================================================================
 " CUSTOM KEYBINDINGS
 "==============================================================================
@@ -167,3 +162,7 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+
+augroup pandoc_syntax
+    au! BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
+augroup END
