@@ -2,74 +2,13 @@
 # .ZSHRC
 #==============================================================================
 
-#if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-#  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-#fi
-
 export EDITOR=/usr/bin/nvim
 export VISUAL=/usr/bin/nvim
 
-
-#==============================================================================
-# ALIASES
-#==============================================================================
-
-alias setclip='xclip -selection c'
-alias getclip='xclip -selection clipboard -o'
-
-alias ls='exa' # [ exa > ls ]
-alias la='exa -a'
-alias ll='exa -al'
-
-alias yaourt-update='yaourt -Syyu --aur'
-
-alias v='nvim'
-alias vi='nvim'
-alias vim='nvim'
-
-alias jshell='/usr/lib/jvm/java-9-openjdk/bin/jshell'
-
-alias t='todo.sh'
-alias z='zathura'
-
-#==============================================================================
-# FUNCTIONS
-#==============================================================================
-
-function keyboard-layout() { setxkbmap -layout 'eu' -option caps:escape }
-# I flashed the keyboard so that caps lock works as escape, so I can enjoy
-# a good keyboard layout on other systems too
-function tada68() { setxbmap -layout 'eu' }
-
-
-function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
-
-function lagrep() { 
-    if   [ $# -eq 1 ]; then; ls -a | grep "$1";
-    elif [ $# -eq 2 ]; then; ls -a "$1" | grep "$2"
-    else ls -a
-    fi
-}
-
-function mkcd() {
-    if [ $# -eq 1 ]; then;
-        mkdir -p "$1"
-        cd "$1"
-    else
-        echo "You need to provide one argument" 
-    fi
-}
-
-function sshrpi() {
-    ip=$(cat /var/lib/misc/dnsmasq.leases | grep 'raspberrypi' | awk '{ print $3 }')
-    ssh pi@$ip
-}
-
-#==============================================================================
-# SCRIPTS 
-#==============================================================================
-
-source ~/.scripts/work.sh
+source ~/.zsh/aliases.zsh
+source ~/.zsh/functions.zsh
+source ~/.zsh/plugins.zsh
+source ~/.zsh/config.zsh
 
 #==============================================================================
 # MKVIRTUALENV
@@ -84,57 +23,3 @@ source /usr/bin/virtualenvwrapper.sh
 #==============================================================================
 
 eval `dircolors ~/.dircolors`
-
-#==============================================================================
-# ZSH HISTORY
-#==============================================================================
-
-HISTFILE="$HOME/.zhistory"
-HISTSIZE=10000
-SAVEHIST=10000
-
-setopt SHARE_HISTORY
-setopt INC_APPEND_HISTORY
-setopt HIST_IGNORE_SPACE
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
-
-#==============================================================================
-# ZPLUGINS
-#==============================================================================
-
-source ~/.zplug/init.zsh
-
-zplug "zdharma/fast-syntax-highlighting"
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "mafredri/zsh-async", from:github
-#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-
-zplug load --verbose
-
-#==============================================================================
-# ZSH SYNTAX HIGHLIGHTING
-#==============================================================================
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=4"
-bindkey '^ ' autosuggest-accept
-
-#==============================================================================
-# ZSH HISTORY SUBSTRING SEARCH STUFF
-#==============================================================================
-
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
-
-#==============================================================================
-# SPACESHIP THEME
-#==============================================================================
-
-SPACESHIP_BATTERY_SHOW=false
