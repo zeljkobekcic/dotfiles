@@ -5,8 +5,8 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "mafredri/zsh-async", from:github
-#zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
-zplug "denysdovhan/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+
 
 zplug load --verbose
 
@@ -28,8 +28,5 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 
-#==============================================================================
-# SPACESHIP THEME
-#==============================================================================
-
-SPACESHIP_BATTERY_SHOW=false
+PURE_PROMPT_SYMBOL="[I]"
+PURE_PROMPT_VICMD_SYMBOL="[N]"

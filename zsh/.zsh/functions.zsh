@@ -1,7 +1,7 @@
-function keyboard-layout() { setxkbmap -layout 'eu' -option caps:escape }
+function keyboard-layout() { setxkbmap -option 'caps:ctrl_modifier' && xcape -e 'Caps_Lock=Escape' & }
 # I flashed the keyboard so that caps lock works as escape, so I can enjoy
 # a good keyboard layout on other systems too
-function tada68() { setxbmap -layout 'eu' }
+function tada68() { setxkbmap -layout 'eu' -option caps:escape -layout 'eu' }
 
 
 function gi() { curl -L -s https://www.gitignore.io/api/$@ ;}
