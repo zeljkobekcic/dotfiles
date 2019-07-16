@@ -1,68 +1,23 @@
-###############################################################################
-#
-# i3 CONFIG
-#
-###############################################################################
-
 set $term kitty
-
-###############################################################################
-#
-# MOD KEY
-#
-###############################################################################
-
 set $mod Mod4
-
-###############################################################################
-#
-# FONT-STYLE AND FONT-SIZE
-#
-###############################################################################
 
 font pango: Fira Code 
 
-###############################################################################
-#
-#    DEFAULT KEYBINDINGS
-#
-###############################################################################
-
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# start a terminal
 bindsym $mod+Return         exec $term
-
-# kill focused window
 bindsym $mod+Shift+q        kill
-
-# launch dmenu 
 bindsym $mod+d              exec rofi -show run -matching fuzzy
 
-# change focus
 bindsym $mod+j              focus left
 bindsym $mod+k              focus down
 bindsym $mod+l              focus up
 bindsym $mod+semicolon      focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left           focus left
-bindsym $mod+Down           focus down
-bindsym $mod+Up             focus up
-bindsym $mod+Right          focus right
-
-# move focused window
 bindsym $mod+Shift+j            move left
 bindsym $mod+Shift+k            move down
 bindsym $mod+Shift+l            move up
 bindsym $mod+Shift+semicolon    move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left        move left
-bindsym $mod+Shift+Down        move down
-bindsym $mod+Shift+Up          move up
-bindsym $mod+Shift+Right       move right
 
 # split in horizontal orientation
 bindsym $mod+h                 split h
@@ -100,8 +55,6 @@ bindsym $mod+Shift+r            restart
 #Enter resize mode
 bindsym $mod+r                  mode "resize"
 
-
-
 ###############################################################################
 #
 #    CUSTOM KEYBINDINGS
@@ -110,9 +63,6 @@ bindsym $mod+r                  mode "resize"
 
 # Make screenshots
 bindsym Print                   exec --no-startup-id scrot '%F--%H-%M-%S.jpg' -e 'mv $f ~/Pictures/screenshots/'
-
-# Start terminal with tmux
-bindsym $mod+Shift+Return       exec --no-startup-id $term -e tmux
 
 # More can be found with xmodmap
 # Keybindings for the soundbuttons
@@ -127,6 +77,19 @@ bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5
 
 # Toggle TouchPad
 bindsym XF86Tools               exec ~/.scripts/toggle_touchpad.sh
+
+# focus output on the left or right
+bindsym $mod+less               focus output left
+bindsym $mod+greater            focus output right
+
+bindsym $mod+Shift+less               move output left
+bindsym $mod+Shift+greater            move output right
+
+bindsym $mod+Shift+Control+less move workspace to output left
+bindsym $mod+Shift+Control+greater move workspace to output right
+
+
+
 
 ###############################################################################
 #
@@ -202,16 +165,10 @@ mode "resize" {
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
-    bindsym j           resize shrink   width  10 px or 10 ppt
-    bindsym k           resize grow     height 10 px or 10 ppt
-    bindsym l           resize shrink   height 10 px or 10 ppt
-    bindsym semicolon   resize grow     width  10 px or 10 ppt
-
-    # same bindings, but for the arrow keys
-    bindsym Left        resize shrink   width  10 px or 10 ppt
-    bindsym Down        resize grow     height 10 px or 10 ppt
-    bindsym Up          resize shrink   height 10 px or 10 ppt
-    bindsym Right       resize grow     width  10 px or 10 ppt
+    bindsym j           resize shrink   width  5 px or 5 ppt
+    bindsym k           resize grow     height 5 px or 5 ppt
+    bindsym l           resize shrink   height 5 px or 5 ppt
+    bindsym semicolon   resize grow     width  5 px or 5 ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -252,18 +209,6 @@ mode "$mode_dmenu" {
     bindsym Escape mode "default"
 }
 
-set $move_mode move workspace (using jkl;)
-bindsym $mod+m mode "$move_mode"
-mode "$move_mode" {
-    bindsym j move workspace to output left; mode "default"
-    bindsym k move workspace to output down; mode "default"
-    bindsym l move workspace to output up; mode "default"
-    bindsym semicolon move workspace to output right; mode "default"
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-
 ###############################################################################
 #
 # COLOURS - GRUVBOX THEME
@@ -290,7 +235,7 @@ set $darkgray   #1d2021
 bar {
     font pango: Fira Code 12, FontAwesome 13
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
-    position bottom 
+    position top
 
     colors {
         separator   $FFFFFF
