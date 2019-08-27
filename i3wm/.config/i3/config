@@ -61,9 +61,6 @@ bindsym $mod+r                  mode "resize"
 #
 ###############################################################################
 
-# Make screenshots
-bindsym Print                   exec --no-startup-id scrot '%F--%H-%M-%S.jpg' -e 'mv $f ~/Pictures/screenshots/'
-
 # More can be found with xmodmap
 # Keybindings for the soundbuttons
 bindsym XF86AudioMute           exec --no-startup-id amixer set Master toggle
@@ -208,6 +205,17 @@ mode "$mode_dmenu" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
+set $screenshot_menu (e)verything, (c)urrent
+
+bindsym $mod+Print mode "$screenshot_menu"
+mode "$screenshot_menu" {
+    bindsym e       mode "default", exec --no-startup-id maim ~/Pictures/screenshots/$(date +'%F__%T:%N').png
+    bindsym c       mode "default", exec --no-startup-id maim -i $(xdotool getactivewindow) ~/Pictures/screenshots/$(date +'%F__%T:%N').png
+    bindsym Return  mode "default"
+    bindsym Escape  mode "default"
+}
+
 
 ###############################################################################
 #
