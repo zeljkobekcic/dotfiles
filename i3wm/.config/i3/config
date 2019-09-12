@@ -5,54 +5,29 @@ font pango: Fira Code
 
 floating_modifier $mod
 
-bindsym $mod+Return         exec $term
-bindsym $mod+Shift+q        kill
-bindsym $mod+d              exec rofi -show run -matching fuzzy
-
-bindsym $mod+j              focus left
-bindsym $mod+k              focus down
-bindsym $mod+l              focus up
-bindsym $mod+semicolon      focus right
-
+bindsym $mod+Return             exec $term
+bindsym $mod+Shift+q            kill
+bindsym $mod+d                  exec rofi -show run -matching fuzzy
+bindsym $mod+j                  focus left
+bindsym $mod+k                  focus down
+bindsym $mod+l                  focus up
+bindsym $mod+semicolon          focus right
 bindsym $mod+Shift+j            move left
 bindsym $mod+Shift+k            move down
 bindsym $mod+Shift+l            move up
 bindsym $mod+Shift+semicolon    move right
-
-# split in horizontal orientation
-bindsym $mod+h                 split h
-
-# split in vertical orientation
-bindsym $mod+v                 split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f                 fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+bindsym $mod+h                  split h
+bindsym $mod+v                  split v
+bindsym $mod+f                  fullscreen toggle
+bindsym $mod+s                  layout stacking
 bindsym $mod+w                  layout tabbed
 bindsym $mod+e                  layout toggle split
-
-# toggle tiling / floating
 bindsym $mod+Shift+space        floating toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+space              focus mode_toggle
-
-# focus the parent container
 bindsym $mod+a                  focus parent
-
-# focus the child container
- bindsym $mod+Shift+a           focus child
-
-# reload the configuration file
- bindsym $mod+Shift+c            reload
-
-# restart i3 inplace
-#   (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+a            focus child
+bindsym $mod+Shift+c            reload
 bindsym $mod+Shift+r            restart
-
-#Enter resize mode
 bindsym $mod+r                  mode "resize"
 
 ###############################################################################
@@ -62,28 +37,29 @@ bindsym $mod+r                  mode "resize"
 ###############################################################################
 
 # More can be found with xmodmap
+
 # Keybindings for the soundbuttons
-bindsym XF86AudioMute           exec --no-startup-id amixer set Master toggle
-bindsym XF86AudioRaiseVolume    exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume    exec --no-startup-id amixer set Master 5%-
-bindsym XF86AudioMicMute        exec --no-startup-id amixer set Capture toggle
+bindsym XF86AudioMute               exec --no-startup-id amixer set Master toggle
+bindsym XF86AudioRaiseVolume        exec --no-startup-id amixer set Master 5%+
+bindsym XF86AudioLowerVolume        exec --no-startup-id amixer set Master 5%-
+bindsym XF86AudioMicMute            exec --no-startup-id amixer set Capture toggle
 
 # Keybindings for the screen-brightness
-bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight +5
-bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -5
+bindsym XF86MonBrightnessUp         exec --no-startup-id xbacklight +5
+bindsym XF86MonBrightnessDown       exec --no-startup-id xbacklight -5
 
 # Toggle TouchPad
-bindsym XF86Tools               exec ~/.scripts/toggle_touchpad.sh
+bindsym XF86Tools                   exec ~/.scripts/toggle_touchpad.sh
 
 # focus output on the left or right
-bindsym $mod+less               focus output left
-bindsym $mod+greater            focus output right
+bindsym $mod+less                   focus output left
+bindsym $mod+greater                focus output right
 
-bindsym $mod+Shift+less               move output left
-bindsym $mod+Shift+greater            move output right
+bindsym $mod+Shift+less             move output left
+bindsym $mod+Shift+greater          move output right
 
-bindsym $mod+Shift+Control+less move workspace to output left
-bindsym $mod+Shift+Control+greater move workspace to output right
+bindsym $mod+Shift+Control+less     move workspace to output left
+bindsym $mod+Shift+Control+greater  move workspace to output right
 
 
 
@@ -212,6 +188,7 @@ bindsym $mod+Print mode "$screenshot_menu"
 mode "$screenshot_menu" {
     bindsym e       mode "default", exec --no-startup-id maim ~/Pictures/screenshots/$(date +'%F__%T:%N').png
     bindsym c       mode "default", exec --no-startup-id maim -i $(xdotool getactivewindow) ~/Pictures/screenshots/$(date +'%F__%T:%N').png
+    bindsym s       mode "default", exec --no-startup-id maim -s ~/Pictures/screenshots/$(date +'%F__%T:%N').png
     bindsym Return  mode "default"
     bindsym Escape  mode "default"
 }
@@ -249,8 +226,8 @@ bar {
         separator   $FFFFFF
         background  $bg
         statusline  $yellow
-#
-#        #                   border      background  text
+
+        #                   border      background  text
         focused_workspace   $aqua       $aqua       $darkgray
         inactive_workspace  $darkgray   $darkgray   $yellow
         active_workspace    $blue       $blue       $darkgray
@@ -289,7 +266,6 @@ for_window [class="^.*"] border pixel 3
 
 exec --no-startup-id nm-applet
 exec --no-startup-id udiskie
-exec --no-startup-id dropbox
 
 ###############################################################################
 #
@@ -298,8 +274,7 @@ exec --no-startup-id dropbox
 ###############################################################################
 
 exec_always --no-startup-id xrdr auto
-set $WALLPAPER ~/Pictures/Wallpapers/Wallpaper.jpg
-exec_always --no-startup-id feh --bg-scale $WALLPAPER
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
 
 ###############################################################################
 #
