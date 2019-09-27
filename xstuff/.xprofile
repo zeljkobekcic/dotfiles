@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+export _JAVA_AWT_WM_NONREPARENTING=1
+dbus-update-activation-environment --systemd DISPLAY
+setxkbmap -layout eu -option caps:escape
