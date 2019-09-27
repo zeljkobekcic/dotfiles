@@ -8,6 +8,11 @@ then
     PATH="$HOME/projects/fff":$PATH
 fi
 
+if [ -e "$HOME/.local/bin/utils" ]
+then 
+    PATH="$HOME/.local/bin/utils":$PATH
+fi
+
 
 HISTFILE="$HOME/.zhistory"
 HISTSIZE=10000
