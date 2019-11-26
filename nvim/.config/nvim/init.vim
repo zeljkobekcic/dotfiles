@@ -9,29 +9,15 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'itchyny/lightline.vim'
 Plug 'luochen1990/rainbow'
 Plug 'dhruvasagar/vim-table-mode'
-" Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/paredit.vim'
-" Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'bling/vim-bufferline'
 Plug 'vim-pandoc/vim-pandoc'
-Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'NLKNguyen/papercolor-theme'
 
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
-Plug 'zchee/deoplete-jedi'
-Plug 'morhetz/gruvbox'
 
 let g:deoplete#enable_at_startup = 1
 
@@ -43,10 +29,25 @@ filetype plugin indent on
 "==============================================================================
 
 syntax enable
-set background=dark
+set background=light
 set termguicolors
-colorscheme gruvbox
-let g:lightline={'colorscheme' : 'gruvbox'}
+colorscheme PaperColor
+
+let g:PaperColor_Theme_Options = {
+  \   'language': {
+  \     'python': {
+  \       'highlight_builtins' : 1
+  \     },
+  \     'cpp': {
+  \       'highlight_standard_library': 1
+  \     },
+  \     'c': {
+  \       'highlight_builtins' : 1
+  \     }
+  \   }
+  \ }
+
+let g:lightline={'colorscheme' : 'PaperColor'}
 
 "==============================================================================
 " BASIC SETTINGS FOR VIM
