@@ -66,7 +66,7 @@ let g:lightline={'colorscheme' : 'gruvbox'}
 " BASIC SETTINGS FOR VIM
 "==============================================================================
 
-let g:python3_host_prog = '/home/zeljko/.virtualenvs/neovim3/bin/python3'
+let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
 
 set shell=/bin/zsh
 
