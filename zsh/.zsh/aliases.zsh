@@ -19,8 +19,8 @@ alias ll='ls -l  --human-readable -v --group-directories-first --color=auto'
 # it does everything we could ask for
 if command -v exa > /dev/null; then
     alias ls='exa'
-    alias la='exa -a'
-    alias ll='exa -al'
+    alias la='exa -la'
+    alias ll='exa -l'
 fi
 
 
