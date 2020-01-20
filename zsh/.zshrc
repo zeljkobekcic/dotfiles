@@ -14,10 +14,6 @@ source ~/.zsh/config.zsh
 # MAKING EXA/LS BEAUTIFUL WITH SOLARIZED COLORS
 #==============================================================================
 
-eval `dircolors ~/.dircolors`
+# eval `dircolors ~/.dircolors`
 
-if [ -n "$DISPLAY" ]; then
-    xset b off
-fi
-
-
+eval "$(pyenv init -)"
