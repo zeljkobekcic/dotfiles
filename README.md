@@ -41,5 +41,5 @@ alternatives.
 
 ## You have an interesting/cool program I should give a try?
 
-I am always happy to try new stuff. If you think that something is really worth
-giving a shot mail me (see my profile)
+I am always happy to try new programs that make my life easer (preferably cli).
+Do you think I should give it a try? Mail me 😀
