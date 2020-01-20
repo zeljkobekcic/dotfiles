@@ -1,17 +1,11 @@
-if [ -e "$HOME/.local/bin" ]
-then
-    PATH="$HOME/.local/bin:"$PATH
-fi
 
-if [ -e "$HOME/projects/fff" ]
-then
-    PATH="$HOME/projects/fff":$PATH
-fi
+paths=("$HOME/.local/bin" "$HOME/.rodin")
 
-if [ -e "$HOME/.local/bin/utils" ]
-then 
-    PATH="$HOME/.local/bin/utils":$PATH
-fi
+for p in $paths; do
+	if [ -e $p ]; then 
+		PATH=$p":"$PATH
+	fi
+done
 
 
 HISTFILE="$HOME/.zhistory"
