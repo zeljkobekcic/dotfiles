@@ -209,13 +209,15 @@ mode "$mode_dmenu" {
     bindsym Escape mode "default"
 }
 
-set $screenshot_menu (e)verything, (c)urrent
+set $screenshot_menu (e)verything, (c)urrent, (s)elect
 
 bindsym $mod+Print mode "$screenshot_menu"
 mode "$screenshot_menu" {
-    bindsym e       mode "default", exec --no-startup-id maim ~/Pictures/screenshots/$(date +'%F__%T:%N').png
-    bindsym c       mode "default", exec --no-startup-id maim -i $(xdotool getactivewindow) ~/Pictures/screenshots/$(date +'%F__%T:%N').png
-    bindsym s       mode "default", exec --no-startup-id maim -s ~/Pictures/screenshots/$(date +'%F__%T:%N').png
+    set $SCREENSHOT ~/Pictures/screenshots/$(date +'%F__%T:%N').png
+
+    bindsym e       mode "default", exec --no-startup-id maim $SCREENSHOT
+    bindsym c       mode "default", exec --no-startup-id maim -i $(xdotool getactivewindow) $SCREENSHOT 
+    bindsym s       mode "default", exec --no-startup-id maim -s $SCREENSHOT
     bindsym Return  mode "default"
     bindsym Escape  mode "default"
 }
