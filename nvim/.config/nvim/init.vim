@@ -57,23 +57,10 @@ endif
 syntax enable
 set background=light
 set termguicolors
-colorscheme PaperColor
+colorscheme gruvbox
+let g:gruvbox_contrast_light="hard"
 
-let g:PaperColor_Theme_Options = {
-  \   'language': {
-  \     'python': {
-  \       'highlight_builtins' : 1
-  \     },
-  \     'cpp': {
-  \       'highlight_standard_library': 1
-  \     },
-  \     'c': {
-  \       'highlight_builtins' : 1
-  \     }
-  \   }
-  \ }
-
-let g:lightline={'colorscheme' : 'PaperColor'}
+let g:lightline={'colorscheme' : 'gruvbox'}
 
 "==============================================================================
 " BASIC SETTINGS FOR VIM
