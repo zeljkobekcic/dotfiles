@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-selected=$(ls ~/.screenlayout | dmenu "$@")
+selected=$(ls ~/.screenlayout | rofi -dmenu -p "screenlayout ▶" "$@")
 
 echo $selected 
 
