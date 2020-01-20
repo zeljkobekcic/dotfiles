@@ -116,10 +116,13 @@ set confirm
 " CUSTOM KEYBINDINGS
 "==============================================================================
 
+let mapleader = "\<SPACE>"
 nnoremap gb :bnext<CR>
 nnoremap gB :bprevious<CR>
 nnoremap <leader><space> :CtrlPBuffer<CR>
-map <C-f> :NERDTreeToggle<CR>
+
+map <F8> :NERDTreeToggle<CR>
+
 
 " source: http://vimcasts.org/episodes/neovim-terminal-mappings/
 if has('nvim')
@@ -164,6 +167,7 @@ let g:pymode_python = 'python3'
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "✹",
     \ "Staged"    : "✚",
