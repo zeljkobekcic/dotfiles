@@ -15,7 +15,7 @@ for i in imports:
     try:
         module_object = importlib.import_module(p)
         vars()[a] = module_object
-        print("😀 {} imported".format(p))
+        print("😀 - {} imported".format(p))
     except ImportError:
-        print("🔥 {} not installed".format(p))
+        print("😑 - {} not installed".format(p))
 
