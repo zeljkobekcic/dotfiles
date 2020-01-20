@@ -1,28 +1,54 @@
 "==============================================================================
+" PLUGIN SETUP 
+"==============================================================================
+
+let g:plugin_base = $HOME . '/.local/share/nvim/'
+let g:plugin_path = g:plugin_base . 'plugged/'
+let g:vimplug_target = g:plugin_base . 'site/autoload/plug.vim'
+let g:vimplug_source = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+if !isdirectory(g:plugin_path)
+    execute('! mkdir -p ' . g:plugin_path . ' 2> /dev/null')
+    execute('! curl -fLo ' . g:vimplug_target . ' --create-dirs ' . g:vimplug_source)
+
+    let g:setuped = 1
+else 
+    let g:setuped = 0
+endif 
+
+"==============================================================================
 " PLUGINS 
 "==============================================================================
 
 set nocompatible
 filetype off
 
-call plug#begin('~/.local/share/nvim/plugged')
+call plug#begin(g:plugin_path)
 
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
-Plug 'scrooloose/nerdtree'
-Plug 'itchyny/lightline.vim'
-Plug 'luochen1990/rainbow'
-Plug 'dhruvasagar/vim-table-mode'
-Plug 'vim-scripts/paredit.vim'
-Plug 'tpope/vim-surround'
-Plug 'bling/vim-bufferline'
-Plug 'vim-pandoc/vim-pandoc'
-Plug 'NLKNguyen/papercolor-theme'
+if !exists('g:started_by_firenvim')
+    Plug 'scrooloose/nerdtree'
+    Plug 'itchyny/lightline.vim'
+    Plug 'bling/vim-bufferline'
+    Plug 'vim-pandoc/vim-pandoc'
+    Plug 'kien/ctrlp.vim'
+    Plug 'luochen1990/rainbow'
+    Plug 'dhruvasagar/vim-table-mode'
+    Plug 'vim-scripts/paredit.vim'
+    Plug 'tpope/vim-surround'
+endif
 
+Plug 'morhetz/gruvbox'
 
 let g:deoplete#enable_at_startup = 1
 
 call plug#end()
 filetype plugin indent on
+
+if g:setuped
+    PlugInstall
+endif
 
 "==============================================================================
 " THEME SETTINGS 
