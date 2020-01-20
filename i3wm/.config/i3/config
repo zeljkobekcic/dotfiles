@@ -250,6 +250,7 @@ bar {
     font pango: Fira Code 12, FontAwesome 13
     status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
     position top
+    strip_workspace_numbers yes
 
     colors {
         separator   $FFFFFF
@@ -275,6 +276,7 @@ client.focused          $darkgray   $blue       $darkgray   $purple     $yellow
 client.focused_inactive $darkgray   $darkgray   $yellow     $purple     $darkgray
 client.unfocused        $darkgray   $darkgray   $yellow     $purple     $darkgray
 client.urgent           $red        $red        $white      $red        $red
+client.background 	$darkgrey
 
 ###############################################################################
 #
@@ -294,7 +296,11 @@ for_window [class="^.*"] border pixel 3
 ###############################################################################
 
 exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id pasystray
 exec --no-startup-id udiskie
+exec --no-startup-id clipit
+
 
 ###############################################################################
 #
@@ -312,3 +318,5 @@ exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
 ###############################################################################
 
 focus_follows_mouse no
+
+
