@@ -83,16 +83,16 @@ bindsym $mod+m bar mode toggle
 #
 ###############################################################################
 
-bindsym $mod+u [instance="dropdown"] scratchpad show; \
-                [instance="dropdown"] move position center
-
-for_window [instance="dropdown"] floating enable
-for_window [instance="dropdown"] sticky enable
-for_window [instance="dropdown"] resize set 1000 600
-for_window [instance="dropdown"] move scratchpad
-for_window [instance="dropdown"] border pixel 20
-
-exec_always kitty --name 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
+# bindsym $mod+u [instance="dropdown"] scratchpad show; \
+#                 [instance="dropdown"] move position center
+# 
+# for_window [instance="dropdown"] floating enable
+# for_window [instance="dropdown"] sticky enable
+# for_window [instance="dropdown"] resize set 1000 600
+# for_window [instance="dropdown"] move scratchpad
+# for_window [instance="dropdown"] border pixel 20
+# 
+# exec_always kitty --name 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
 
 ###############################################################################
 #
