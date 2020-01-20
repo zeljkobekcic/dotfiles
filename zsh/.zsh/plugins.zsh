@@ -9,6 +9,7 @@ zplug "zsh-users/zsh-history-substring-search"
 zplug "mafredri/zsh-async", from:github
 zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "MichaelAquilina/zsh-you-should-use"
+zplug "plugins/git", from:oh-my-zsh
 
 zplug load
 
