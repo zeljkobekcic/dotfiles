@@ -48,3 +48,5 @@ alias chown='chown -v'
 alias -g G='| grep -in'
 alias -g T='| tail'
 alias -g H='| head'
+
+alias proj-byobu='byobu new -t $(basename $(pwd))'
