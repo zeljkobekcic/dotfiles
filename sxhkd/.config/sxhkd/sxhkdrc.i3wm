@@ -1,0 +1,47 @@
+mod4 + Return
+    st
+
+super + d
+    rofi -modi drun -show drun -show-icons -matching fuzzy
+
+super + Escape
+	pkill -USR1 -x sxhkd
+
+super + shift + r
+    i3-msg restart
+
+super + {_, shift + } {j,k,l,semicolon}
+    i3-msg {focus, move} {left, down, up, right}
+
+super + {h, v}
+    i3-msg split {h, v}
+
+super + shift + q
+    i3-msg kill
+
+super + f
+    i3-msg fullscreen toggle
+
+super + {s, w, e}
+    i3-msg layout {stacking, tabbed, toggle split}
+
+super + {_, shift + } @space
+    i3-msg {focus mode_toggle, floating toggle}
+
+super + {_, shift + } a
+    i3-msg focus {parent,child}
+
+super + {comma, period}
+    i3-msg focus output {left, right}
+
+super + shift {_, control + } {less, greater}
+   i3-msg move {_, workspace to} output {left, right}
+
+super + {_, shift + } {1-9,0}
+    i3-msg {_, move container to} workspace {1-9,10}
+
+XF86Audio{Mute,RaiseVolume,LowerVolume,MicMute}
+    amixer set {Master toggle, Master 5%+, Master 5%-, Capture toggle}
+
+XF86MonBrightness{Up,Down}
+    xbacklight {+,-}5

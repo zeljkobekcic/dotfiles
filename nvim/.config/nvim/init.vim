@@ -25,21 +25,19 @@ filetype off
 
 call plug#begin(g:plugin_path)
 
-Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
-
-if !exists('g:started_by_firenvim')
-    Plug 'scrooloose/nerdtree'
-    Plug 'itchyny/lightline.vim'
-    Plug 'bling/vim-bufferline'
-    Plug 'vim-pandoc/vim-pandoc'
-    Plug 'kien/ctrlp.vim'
-    Plug 'luochen1990/rainbow'
-    Plug 'dhruvasagar/vim-table-mode'
-    Plug 'vim-scripts/paredit.vim'
-    Plug 'tpope/vim-surround'
-endif
-
-Plug 'morhetz/gruvbox'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'dense-analysis/ale'
+Plug 'scrooloose/nerdtree'
+Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
+Plug 'vim-pandoc/vim-pandoc' 
+Plug 'kien/ctrlp.vim'
+" Plug 'luochen1990/rainbow'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'vim-scripts/paredit.vim'
+Plug 'tpope/vim-surround'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-scripts/a.vim'
 
 let g:deoplete#enable_at_startup = 1
 
@@ -55,12 +53,10 @@ endif
 "==============================================================================
 
 syntax enable
-set background=light
-set termguicolors
-colorscheme gruvbox
-let g:gruvbox_contrast_light="hard"
+set background=dark
+colorscheme solarized
 
-let g:lightline={'colorscheme' : 'gruvbox'}
+let g:lightline={'colorscheme' : 'solarized'}
 
 "==============================================================================
 " BASIC SETTINGS FOR VIM
@@ -158,6 +154,21 @@ let g:ale_sign_error = '->'
 let g:ale_sign_warning = '__'
 
 let g:rainbow_active = 1
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
 
 let g:SimpylFold_fold_import = 0
 let b:SimpylFold_fold_import = 0

@@ -1,104 +1,10 @@
-set $term kitty
 set $mod Mod4
 
 font pango: Fira Code 
 
 floating_modifier $mod
 
-
-bindsym $mod+Return             exec $term
-bindsym $mod+Shift+q            kill
-
-bindsym $mod+d                  exec rofi -show run -matching fuzzy
-
-bindsym $mod+j                  focus left
-bindsym $mod+k                  focus down
-bindsym $mod+l                  focus up
-bindsym $mod+semicolon          focus right
-
-bindsym $mod+Shift+j            move left
-bindsym $mod+Shift+k            move down
-bindsym $mod+Shift+l            move up
-bindsym $mod+Shift+semicolon    move right
-
-bindsym $mod+h                  split h
-bindsym $mod+v                  split v
-
-bindsym $mod+f                  fullscreen toggle
-bindsym $mod+s                  layout stacking
-bindsym $mod+w                  layout tabbed
-
-bindsym $mod+e                  layout toggle split
-
-bindsym $mod+Shift+space        floating toggle
-bindsym $mod+space              focus mode_toggle
-
-bindsym $mod+Shift+s            sticky toggle
-
-bindsym $mod+a                  focus parent
-bindsym $mod+Shift+a            focus child
-
-bindsym $mod+Shift+c            reload
-bindsym $mod+Shift+r            restart
-
-bindsym $mod+r                  mode "resize"
-
-###############################################################################
-#
-#    CUSTOM KEYBINDINGS
-#
-###############################################################################
-
-# More can be found with xmodmap
-
-# Keybindings for the soundbuttons
-bindsym XF86AudioMute               exec --no-startup-id amixer set Master toggle
-bindsym XF86AudioRaiseVolume        exec --no-startup-id amixer set Master 5%+
-bindsym XF86AudioLowerVolume        exec --no-startup-id amixer set Master 5%-
-bindsym XF86AudioMicMute            exec --no-startup-id amixer set Capture toggle
-
-# Keybindings for the screen-brightness
-bindsym XF86MonBrightnessUp         exec --no-startup-id xbacklight +5
-bindsym XF86MonBrightnessDown       exec --no-startup-id xbacklight -5
-
-# Toggle TouchPad
-bindsym XF86Tools                   exec ~/.scripts/toggle_touchpad.sh
-
-# focus output on the left or right
-bindsym $mod+less                   focus output left
-bindsym $mod+greater                focus output right
-
-bindsym $mod+Shift+less             move output left
-bindsym $mod+Shift+greater          move output right
-
-bindsym $mod+Shift+Control+less     move workspace to output left
-bindsym $mod+Shift+Control+greater  move workspace to output right
-
-bindsym $mod+m bar mode toggle
-
-###############################################################################
-#
-#    DROP DOWN TERMINAL
-#    Thanks to @Luke Smith (https://github.com/LukeSmithxyz)
-#
-###############################################################################
-
-# bindsym $mod+u [instance="dropdown"] scratchpad show; \
-#                 [instance="dropdown"] move position center
-# 
-# for_window [instance="dropdown"] floating enable
-# for_window [instance="dropdown"] sticky enable
-# for_window [instance="dropdown"] resize set 1000 600
-# for_window [instance="dropdown"] move scratchpad
-# for_window [instance="dropdown"] border pixel 20
-# 
-# exec_always kitty --name 'dropdown' -e '/home/zeljko/.scripts/tmux_dropdown_session.sh'
-
-###############################################################################
-#
-#    Workspaces
-#
-###############################################################################
+bindsym $mod+m          bar mode toggle
 
 #set the workspace's names
 set $ws1     "1"
@@ -111,82 +17,22 @@ set $ws7     "7"
 set $ws8     "8"
 set $ws9     "9"
 set $ws10    "10"
-set $ws11    "11:?"
 set $ws12    "12:!"
-
-# switch to workspace
-bindsym $mod+1      workspace $ws1
-bindsym $mod+2      workspace $ws2
-bindsym $mod+3      workspace $ws3
-bindsym $mod+4      workspace $ws4
-bindsym $mod+5      workspace $ws5
-bindsym $mod+6      workspace $ws6
-bindsym $mod+7      workspace $ws7
-bindsym $mod+8      workspace $ws8
-bindsym $mod+9      workspace $ws9
-bindsym $mod+0      workspace $ws10
-bindsym $mod+minus  workspace $ws11
-bindsym $mod+equal  workspace $ws12
-
-# move focused container to workspace
-bindsym $mod+Shift+1        move container to workspace $ws1
-bindsym $mod+Shift+2        move container to workspace $ws2
-bindsym $mod+Shift+3        move container to workspace $ws3
-bindsym $mod+Shift+4        move container to workspace $ws4
-bindsym $mod+Shift+5        move container to workspace $ws5
-bindsym $mod+Shift+6        move container to workspace $ws6
-bindsym $mod+Shift+7        move container to workspace $ws7
-bindsym $mod+Shift+8        move container to workspace $ws8
-bindsym $mod+Shift+9        move container to workspace $ws9
-bindsym $mod+Shift+0        move container to workspace $ws10
-bindsym $mod+Shift+minus    move container to workspace $ws11
-bindsym $mod+Shift+equal    move container to workspace $ws12
-
-
-###############################################################################
-#
-#    WORKSPACE/WINDOWS HANDLING
-#
-###############################################################################
 
 for_window [urgent=latest] focus
 
-###############################################################################
-#
-#    DEFAULT MODES
-#
-###############################################################################
-
-# resize window (you can also use the mouse for that)
+bindsym $mod+r                  mode "resize"
 mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
     bindsym j           resize shrink   width  5 px or 5 ppt
     bindsym k           resize grow     height 5 px or 5 ppt
     bindsym l           resize shrink   height 5 px or 5 ppt
     bindsym semicolon   resize grow     width  5 px or 5 ppt
-
-    # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
-###############################################################################
-#
-#    CUSTOM MODES
-#
-###############################################################################
-
-# Enter the "system-mode"
 bindsym $mod+Shift+e mode "$mode_system"
-
-# log out prompt
 set $mode_system system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
-
 mode "$mode_system" {
     bindsym l           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh lock
     bindsym e           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh exit 
@@ -198,23 +44,19 @@ mode "$mode_system" {
 }
 
 set $mode_dmenu (b)ookmarkmenu, (p)assmenu, (s)creenmenu
-
 bindsym $mod+Shift+d mode "$mode_dmenu"
 mode "$mode_dmenu" {
     bindsym b exec bash ~/.scripts/dmenu_scripts/bookmarkmenu; mode "default"
     bindsym p exec bash ~/.scripts/dmenu_scripts/passmenu; mode "default"
     bindsym s exec bash ~/.scripts/dmenu_scripts/screenmenu; mode "default"
-
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
 
 set $screenshot_menu (e)verything, (c)urrent, (s)elect
-
 bindsym $mod+Print mode "$screenshot_menu"
 mode "$screenshot_menu" {
     set $SCREENSHOT ~/Pictures/screenshots/$(date +'%F__%T:%N').png
-
     bindsym e       mode "default", exec --no-startup-id maim $SCREENSHOT
     bindsym c       mode "default", exec --no-startup-id maim -i $(xdotool getactivewindow) $SCREENSHOT 
     bindsym s       mode "default", exec --no-startup-id maim -s $SCREENSHOT
@@ -295,28 +137,15 @@ for_window [class="^.*"] border pixel 3
 #
 ###############################################################################
 
+exec --no-startup-id flameshot
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id pasystray
 exec --no-startup-id udiskie
-exec --no-startup-id clipit
-
-
-###############################################################################
-#
-# REFRESH
-#
-###############################################################################
+exec --no-startup-id sxhkd
 
 exec_always --no-startup-id xrdr auto
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
-
-###############################################################################
-#
-# OTHER SETTINGS
-#
-###############################################################################
-
 focus_follows_mouse no
 
 

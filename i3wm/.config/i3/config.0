@@ -1,0 +1,141 @@
+set $term kitty
+set $mod Mod4
+
+font pango: Fira Code 
+
+floating_modifier $mod
+focus_follows_mouse no
+
+set $mode_system system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
+set $mode_dmenu (b)ookmarkmenu, (p)assmenu, (s)creenmenu
+set $screenshot_menu (e)verything, (s)elect
+
+bindsym $mod+r mode resize
+bindsym $mod+Shift+e mode "$mode_system"
+bindsym $mod+Shift+space mode "$mode_dmenu"
+bindsym $mod+Print mode "$screenshot_menu"
+
+#set the workspace's names
+set $ws1     "1"
+set $ws2     "2"
+set $ws3     "3"
+set $ws4     "4"
+set $ws5     "5"
+set $ws6     "6"
+set $ws7     "7"
+set $ws8     "8"
+set $ws9     "9"
+set $ws10    "10"
+set $ws11    "11:?"
+set $ws12    "12:!"
+
+
+mode "resize" {
+bindsym j resize shrink   px
+bindsym k resize shrink   px
+bindsym l resize shrink   px
+bindsym semicolon resize shrink   px
+bindsym Return mode default
+bindsym Escape mode default
+}
+
+
+# log out prompt
+mode "$mode_system" {
+bindsym l mode default, exec --no-startup-id ~/.scripts/i3exit.sh lock"
+bindsym e mode default, exec --no-startup-id ~/.scripts/i3exit.sh exit "
+bindsym s mode default, exec --no-startup-id ~/.scripts/i3exit.sh suspend "
+bindsym r mode default, exec --no-startup-id ~/.scripts/i3exit.sh reboot "
+bindsym Shift+s mode default, exec --no-startup-id ~/.scripts/i3exit.sh shutdown"
+bindsym Return mode default
+bindsym Escape mode default
+}
+
+
+mode "$mode_dmenu" {
+bindsym b exec bash ~/.scripts/dmenu_scripts/bookmarkmenu; mode default
+bindsym p exec bash ~/.scripts/dmenu_scripts/passmenu; mode default
+bindsym s exec bash ~/.scripts/dmenu_scripts/screenmenu; mode default
+
+bindsym Return mode default
+bindsym Escape mode default
+}
+
+mode "$screenshot_menu" {
+set $SCREENSHOT_PATH ~/Pictures/screenshots/
+
+bindsym e mode default, exec --no-startup-id flameshot full --path $SCREENSHOT_PATH"
+bindsym c mode default, exec --no-startup-id flameshot screen --path $SCREENSHOT_PATH"
+bindsym s mode default, exec --no-startup-id flameshot gui --path $SCREENSHOT_PATH"
+bindsym Shift+e mode default, exec --no-startup-id flameshot full --clipboard"
+bindsym Shift+c mode default, exec --no-startup-id flameshot screen --clipboard"
+
+bindsym Return mode default
+bindsym Escape mode default
+}
+
+
+###############################################################################
+#
+# COLOURS - GRUVBOX THEME
+# SOURCE: https://github.com/a-schaefers/i3-wm-gruvbox-theme
+#
+###############################################################################
+
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d68
+set $gray #a89984
+set $darkgray #1d2021
+set $white #000000
+
+# XXX: migration script could not handle line: bar {
+font pango: Fira Code 12, FontAwesome 13
+# XXX: migration script could not handle line: status_command i3blocks -c ~/.config/i3blocks/i3blocks.conf
+# XXX: migration script could not handle line: position top
+# XXX: migration script could not handle line: strip_workspace_numbers yes
+
+# XXX: migration script could not handle line: colors {
+# XXX: migration script could not handle line: separator   #FFFFFF
+# XXX: migration script could not handle line: background  $bg
+# XXX: migration script could not handle line: statusline  $yellow
+
+# XXX: migration script could not handle line: focused_workspace   $aqua $aqua $darkgray
+# XXX: migration script could not handle line: inactive_workspace  $darkgray $darkgray $yellow
+# XXX: migration script could not handle line: active_workspace    $blue $blue $darkgray
+# XXX: migration script could not handle line: urgent_workspace    $red $red $bg
+
+}
+}
+
+
+# class                 border      backgr      text        indicator   child_brdr
+client.focused          $darkgray   $blue       $darkgray   $purple     $yellow
+client.focused_inactive $darkgray   $darkgray   $yellow     $purple     $darkgray
+client.unfocused        $darkgray   $darkgray   $yellow     $purple     $darkgray
+client.urgent           $red        $red        $white      $red        $red
+client.background 	$darkgray
+
+exec --no-startup-id sxhkd
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec --no-startup-id pasystray
+exec --no-startup-id udiskie
+exec --no-startup-id flameshot
+
+# XXX: migration script could not handle line: exec_always --no-startup-id xrdr auto
+# XXX: migration script could not handle line: exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
+
+# XXX: Automatically added a bar configuration
+# XXX: migration script could not handle line: bar {
+# XXX: migration script could not handle line: status_command i3status
+}
+
+# XXX: Automatically added a bar configuration
+bar {
+    status_command i3status
+}
