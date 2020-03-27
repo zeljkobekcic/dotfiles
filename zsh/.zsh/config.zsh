@@ -1,5 +1,5 @@
 
-paths=("$HOME/.local/bin" "$HOME/.rodin")
+paths=("$HOME/.local/bin" "$HOME/.rodin", "/usr/lib/jvm/default")
 
 for p in $paths; do
 	if [ -e $p ]; then 

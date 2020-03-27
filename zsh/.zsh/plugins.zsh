@@ -7,7 +7,7 @@ zplug "zsh-users/zsh-history-substring-search"
 # does not work so well with the completions or he history substring search
 # zplug "softmoth/zsh-vim-mode"
 zplug "mafredri/zsh-async", from:github
-zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+# zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 zplug "MichaelAquilina/zsh-you-should-use"
 zplug "plugins/git", from:oh-my-zsh
 
