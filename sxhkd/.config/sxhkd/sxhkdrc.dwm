@@ -1,0 +1,57 @@
+super + Escape
+	pkill -USR1 -x sxhkd; \
+	notify-send "sxhkd restarted"
+
+super + p
+	rofi -modi drun -show drun -show-icons -matching fuzzy
+
+super + shift + Return
+	st
+
+super + Return
+        dwmc zoom
+
+super + {k,j}
+	dwmc focusstack {-,+}1
+
+super + shift + {k,j}
+	dwmc movestack {-,+}1
+
+super + {i, d}
+        dwmc incnmaster {+,-}1
+
+super + {h,l}
+	dwmc setmfact {-,+}0.05
+
+super + b
+	dwmc togglebar
+
+super + shift + p
+	dwmc togglefloating
+
+super + w
+	dwmc killclient
+
+super + Tab
+	dwmc view
+
+super + {t,f,m, g}
+	dwmc setlayoutex {0,1,2,3}
+
+super + {_,ctrl +}{_,shift +} {1-9}
+	dwmc {_,toggle}{viewex,tagex} {0-8}
+
+super + {_, shift + } {comma, period}
+        dwmc {focusmon, tagmon} {-,+}1
+
+super + 0
+	dwmc viewall
+
+super + shift + a:
+        dwm_action
+
+XF86Audio{Mute,RaiseVolume,LowerVolume,MicMute}
+    amixer set {Master toggle, Master 5%+, Master 5%-, Capture toggle}
+
+XF86MonBrightness{Up,Down}
+    xbacklight {+,-}5

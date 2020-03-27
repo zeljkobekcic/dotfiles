@@ -1,7 +1,7 @@
 mod4 + Return
-    st
+    kitty
 
-super + d
+super + p
     rofi -modi drun -show drun -show-icons -matching fuzzy
 
 super + Escape
@@ -39,6 +39,9 @@ super + shift {_, control + } {less, greater}
 
 super + {_, shift + } {1-9,0}
     i3-msg {_, move container to} workspace {1-9,10}
+
+super + shift + s
+    i3wm_action
 
 XF86Audio{Mute,RaiseVolume,LowerVolume,MicMute}
     amixer set {Master toggle, Master 5%+, Master 5%-, Capture toggle}
