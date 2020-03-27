@@ -53,7 +53,7 @@ endif
 "==============================================================================
 
 syntax enable
-set background=dark
+set background=light
 colorscheme solarized
 
 let g:lightline={'colorscheme' : 'solarized'}
