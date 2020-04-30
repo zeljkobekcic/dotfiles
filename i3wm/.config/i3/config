@@ -4,6 +4,12 @@ font pango: Fira Code
 
 floating_modifier $mod
 
+###############################################################################
+#
+# Keybindings are in the SXHKD config
+#
+###############################################################################
+
 bindsym $mod+m          bar mode toggle
 
 #set the workspace's names
@@ -30,17 +36,6 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+Shift+e mode "$mode_system"
-set $mode_system system (l)ock, (e)logout, hybrid (s)leeping, (r)eboot, Shift+(s)hutdown
-mode "$mode_system" {
-    bindsym l           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh lock
-    bindsym e           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh exit 
-    bindsym s           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh suspend 
-    bindsym r           mode "default", exec --no-startup-id ~/.scripts/i3exit.sh reboot 
-    bindsym Shift+s     mode "default", exec --no-startup-id ~/.scripts/i3exit.sh shutdown
-    bindsym Return      mode "default"
-    bindsym Escape      mode "default"
-}
 
 set $mode_dmenu (b)ookmarkmenu, (p)assmenu, (s)creenmenu
 bindsym $mod+Shift+d mode "$mode_dmenu"
@@ -144,7 +139,7 @@ exec --no-startup-id udiskie
 exec --no-startup-id sxhkd
 
 exec_always --no-startup-id xrdr auto
-exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/Wallpaper.jpg
+exec_always --no-startup-id nitrogen --restore &
 focus_follows_mouse no
 
 
