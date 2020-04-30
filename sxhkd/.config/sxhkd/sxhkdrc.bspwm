@@ -1,5 +1,5 @@
 mod4 + Return
-    kitty
+    st
 
 super + @space
     rofi -modi drun -show drun -show-icons -matching fuzzy
@@ -81,8 +81,8 @@ super + ctrl + {j,k,l,semicolon}
 # 	bspc node -o 0.{1-9}
 
 # cancel the preselection for the focused node
-# super + ctrl + space
-# 	bspc node -p cancel
+super + ctrl + space
+	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
 # super + ctrl + shift + space
@@ -103,4 +103,10 @@ super + alt + shift + {j,k,l,semicolon}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+XF86Audio{Mute,RaiseVolume,LowerVolume,MicMute}
+    amixer set {Master toggle, Master 5%+, Master 5%-, Capture toggle}
+
+XF86MonBrightness{Up,Down}
+    xbacklight {+,-}5
 

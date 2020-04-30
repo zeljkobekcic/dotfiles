@@ -1,5 +1,5 @@
 mod4 + Return
-    kitty
+    st
 
 super + p
     rofi -modi drun -show drun -show-icons -matching fuzzy

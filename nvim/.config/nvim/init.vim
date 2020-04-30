@@ -25,19 +25,23 @@ filetype off
 
 call plug#begin(g:plugin_path)
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'dense-analysis/ale'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
+
+Plug 'Yggdroot/indentLine'
+
 Plug 'vim-pandoc/vim-pandoc' 
+" really hard to see what you have actually written
+"Plug 'vim-pandoc/vim-pandoc-syntax'
+
 Plug 'kien/ctrlp.vim'
-" Plug 'luochen1990/rainbow'
+Plug 'luochen1990/rainbow'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'vim-scripts/paredit.vim'
 Plug 'tpope/vim-surround'
-Plug 'altercation/vim-colors-solarized'
-Plug 'vim-scripts/a.vim'
+Plug 'othree/html5.vim'
 
 let g:deoplete#enable_at_startup = 1
 
@@ -53,16 +57,17 @@ endif
 "==============================================================================
 
 syntax enable
-set background=light
-colorscheme solarized
+"set background=light
+"colorscheme solarized
 
-let g:lightline={'colorscheme' : 'solarized'}
+"let g:lightline={'colorscheme' : 'solarized'}
 
 "==============================================================================
 " BASIC SETTINGS FOR VIM
 "==============================================================================
 
 let g:python3_host_prog = '~/.virtualenvs/neovim3/bin/python3'
+
 
 set shell=/bin/zsh
 
@@ -148,10 +153,13 @@ endif
 "==============================================================================
 " PLUGIN SETTINGS 
 "==============================================================================
-
+"
+let g:table_mode_corner='|'
 
 let g:ale_sign_error = '->'
 let g:ale_sign_warning = '__'
+
+
 
 let g:rainbow_active = 1
 let g:rbpt_colorpairs = [
@@ -191,3 +199,4 @@ let g:NERDTreeIndicatorMapCustom = {
     \ 'Ignored'   : '☒',
     \ "Unknown"   : "?"
     \ }
+

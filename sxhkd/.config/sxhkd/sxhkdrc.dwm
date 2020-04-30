@@ -17,6 +17,9 @@ super + {k,j}
 super + shift + {k,j}
 	dwmc movestack {-,+}1
 
+super +  s
+        dwmc switchcol 0 
+
 super + {i, d}
         dwmc incnmaster {+,-}1
 
@@ -35,8 +38,8 @@ super + w
 super + Tab
 	dwmc view
 
-super + {t,f,m, g}
-	dwmc setlayoutex {0,1,2,3}
+super + {t, f, m, c, g}
+	dwmc setlayoutex {0,1,2,3,4}
 
 super + {_,ctrl +}{_,shift +} {1-9}
 	dwmc {_,toggle}{viewex,tagex} {0-8}
