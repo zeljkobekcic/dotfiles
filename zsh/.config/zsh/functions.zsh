@@ -22,9 +22,27 @@ function mkcd() {
     fi
 }
 
-function sshrpi() {
-    ip=$(cat /var/lib/misc/dnsmasq.leases | grep 'raspberrypi' | awk '{ print $3 }')
-    ssh pi@$ip
+
+function yt-dl-audio() {
+    if [ ! -e $1 ]
+    then;
+        title=$(youtube-dl --get-title $1);
+        video_id=$(youtube-dl --get-id $1);
+
+        if [ -e $video_id ]
+        then;
+            echo "$video_id / $title already exists"
+        else
+            mkdir "$video_id"
+            cd "$video_id"
+
+            echo "$title" > title.txt &
+            youtube-dl --extract-audio --audio-format mp3 --audio-quality 0 $1 &
+            wget $(youtube-dl --get-thumbnail $1) --output-document="$video_id.jpg" &
+            youtube-dl --get-description $1 > "$video_id.txt" &
+
+        fi
+    else
+        echo "Provide an url!"
+    fi
 }
-
-
