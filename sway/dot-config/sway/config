@@ -1,0 +1,197 @@
+xwayland enabled 
+
+set $mod Mod4
+set $alt Mod1
+
+set $term kitty 
+set $menu wofi --show drun
+
+input type:keyboard {
+    xkb_layout eu
+}
+
+font pango: Hack Nerd Font Mono Regular 12
+
+output * bg ~/.config/wallpaper/pug-gandalf.jpg fill
+
+set $displayMain 'LG Electronics LG HDR 4K 405NTWGBG641'
+set $displaySide 'Dell Inc. DELL S2722QC 505QLD3'
+
+output $displayMain resolution 3840x2160
+output $displayMain scale 1.25
+output $displayMain position 3075 0
+
+output $displaySide transform 270
+output $displaySide scale 1.25
+output $displaySide resolution 3840x2160
+output $displaySide position 0 0 
+
+bindsym $mod+Return exec $term
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec $menu
+floating_modifier $mod normal
+bindsym $mod+Shift+c reload
+
+bindsym $mod+$alt+e exec ~/Projects/private/emoji-menu/emoji-menu.sh
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+bracketleft  move workspace to output left
+bindsym $mod+bracketright move workspace to output right
+
+bindsym $mod+1 workspace number 1
+bindsym $mod+2 workspace number 2
+bindsym $mod+3 workspace number 3
+bindsym $mod+4 workspace number 4
+bindsym $mod+5 workspace number 5
+bindsym $mod+6 workspace number 6
+bindsym $mod+7 workspace number 7
+bindsym $mod+8 workspace number 8
+bindsym $mod+9 workspace number 9
+bindsym $mod+0 workspace number 10
+
+bindsym $mod+Shift+1 move container to workspace number 1
+bindsym $mod+Shift+2 move container to workspace number 2
+bindsym $mod+Shift+3 move container to workspace number 3
+bindsym $mod+Shift+4 move container to workspace number 4
+bindsym $mod+Shift+5 move container to workspace number 5
+bindsym $mod+Shift+6 move container to workspace number 6
+bindsym $mod+Shift+7 move container to workspace number 7
+bindsym $mod+Shift+8 move container to workspace number 8
+bindsym $mod+Shift+9 move container to workspace number 9
+bindsym $mod+Shift+0 move container to workspace number 10
+
+workspace 7 output $displaySide
+workspace 8 output $displaySide
+workspace 9 output $displaySide
+workspace 10 output $displaySide
+
+workspace 1 output $displayMain
+workspace 2 output $displayMain
+workspace 3 output $displayMain
+workspace 4 output $displayMain
+workspace 5 output $displayMain
+workspace 6 output $displayMain
+
+
+bindsym $mod+b splith
+bindsym $mod+v splitv
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+f fullscreen
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+bindsym XF86AudioPlay        exec playerctl play-pause
+bindsym XF86AudioNext        exec playerctl next
+bindsym XF86AudioPrev        exec playerctl previous
+bindsym XF86AudioRaiseVolume exec playerctl volume 0.05+
+bindsym XF86AudioLowerVolume exec playerctl volume 0.05-
+bindsym XF86AudioMute        exec playerctl volume 0
+
+set $mode_power [l]ogoff | [r]eboot | [p]oweroff | [s]uspend
+mode "$mode_power" {
+    bindsym l exec swaymsg exit
+    bindsym p exec systemctl poweroff
+    bindsym r exec systemctl reboot
+    bindsym s exec systemctl suspend; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+$alt+p mode "$mode_power"
+
+
+mode "resize" {
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+$alt+r mode "resize"
+
+set $screenshot_path ~/Pictures/Screenshots/screenshot-$(date +'%Y-%m-%d-%H:%M:%S').png
+set $mode_screenshot [f]ull to file | [F]ull to clipboard | [w]indow to file | [W]indow to clipboard | [r]egion to file | [R]egion to clipboard
+mode "$mode_screenshot" {
+    bindsym f       exec grimshot --notify save output $screenshot_path; mode "default"
+    bindsym Shift+f exec grimshot --notify copy output $screenshot_path; mode "default"
+    bindsym w       exec grimshot --notify save active $screenshot_path; mode "default"
+    bindsym Shift+w exec grimshot --notify copy active $screenshot_path; mode "default"
+    bindsym r       exec grimshot --notify save area   $screenshot_path; mode "default"
+    bindsym Shift+r exec grimshot --notify copy area   $screenshot_path; mode "default"
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+$alt+s mode "$mode_screenshot"
+
+
+include ./colors
+
+bar {
+    position top
+
+    font pango: Hack Nerd Font Mono Regular 12
+
+    status_command i3blocks
+
+    colors {
+        background         $base
+        statusline         $text
+        focused_statusline $text
+        focused_separator  $base
+
+        focused_workspace  $base  $mauve    $crust
+        active_workspace   $base  $surface2 $text
+        inactive_workspace $base  $base     $text
+        urgent_workspace   $base  $red      $crust
+    }
+}
+
+# target                 title     bg        text   indicator  border
+client.focused           $lavender $mauve    $crust    $rosewater $red
+client.focused_inactive  $overlay0 $base     $text     $rosewater $overlay0
+client.unfocused         $overlay0 $base     $text     $rosewater $overlay0
+client.urgent            $peach    $peach    $red      $overlay0  $peach
+client.placeholder       $overlay0 $base     $text     $overlay0  $overlay0
+client.background        $base
+
+default_border normal 5
+
+exec --no-startup-id mako
+exec --no-startup-id keepassxc
+exec --no-startup-id udiskie
+
+for_window [window_role = "pop-up"] floating enable
+for_window [window_role = "bubble"] floating enable
+for_window [window_role = "dialog"] floating enable
+for_window [window_type = "dialog"] floating enable
+for_window [window_role = "task_dialog"] floating enable
+for_window [window_type = "menu"] floating enable
+for_window [app_id = "floating"] floating enable
+
+for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disable, move absolute position 0 0
+for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1080 height 1080
+
+assign [app_id="org.keepassxc.KeePassXC"] 9
+assign [app_id="Slack"] 10
+
+seat seat0 xcursor_theme Banana 48
+
+include /etc/sway/config.d/*
+

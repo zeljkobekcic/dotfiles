@@ -1,0 +1,40 @@
+setopt correct                                                  # Auto correct mistakes
+setopt extendedglob                                             # Extended globbing. Allows using regular expressions with *
+setopt nocaseglob                                               # Case insensitive globbing
+setopt rcexpandparam                                            # Array expension with parameters
+setopt nocheckjobs                                              # Don't warn about running processes when exiting
+setopt numericglobsort                                          # Sort filenames numerically when it makes sense
+setopt nobeep                                                   # No beep
+setopt appendhistory                                            # Immediately append history instead of overwriting
+setopt histignorealldups                                        # If a new command is a duplicate, remove the older one
+setopt autocd                                                   # if only directory path is entered, cd there.
+setopt inc_append_history                                       # save commands are added to the history immediately, otherwise only when shell exits.
+setopt histignorespace                                          # Don't save commands that start with space
+
+export HISTFILE=~/.zhistory
+export HISTSIZE=10000
+export SAVEHIST=10000
+export EDITOR=/usr/bin/nvim
+export VISUAL=/usr/bin/nvim
+export WORDCHARS=${WORDCHARS//\/[&.;]}                                 # Don't consider certain characters part of the word
+
+# Theming section  
+autoload -U compinit colors zcalc
+compinit -d
+colors
+
+eval "$(starship init zsh)"
+source "$HOME/.config/zsh/envs.zsh"
+source "$HOME/.config/zsh/my-functions.zsh"
+source "$HOME/.config/zsh/direnv.zsh"
+source "$HOME/.config/zsh/alias.zsh"
+source "$HOME/.config/zsh/completion.zsh"
+source "$HOME/.config/zsh/term-window-tab-name.zsh"
+source "$HOME/.config/zsh/conda.zsh"
+source "$HOME/.config/zsh/plugins.zsh"
+source "$HOME/.config/zsh/clipboard.zsh"
+source "$HOME/.config/zsh/alacritty_move_word.zsh"
+source "$HOME/.config/zsh/pyenv.zsh"
+source "$HOME/.config/zsh/man-page-colors.zsh"
+
+export LD_LIBRARY_PATH=/home/zeljkobekcic/.local/lib/arch-mojo:$LD_LIBRARY_PATH
