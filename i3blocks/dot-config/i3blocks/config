@@ -1,0 +1,21 @@
+command=~/.config/i3blocks/scripts/$BLOCK_NAME
+separator_block_width=30
+
+[bandwidth]
+interval=10
+INTERFACE=enp111s0
+INLABEL= 
+OUTLABEL= 
+
+[disk]
+LABEL= 
+interval=30
+separator=true
+
+[memory]
+label=  
+interval=30
+
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=5

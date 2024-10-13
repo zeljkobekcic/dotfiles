@@ -1,0 +1,15 @@
+import = [ "~/.config/alacritty/dark-colorscheme.toml" ]
+
+[cursor]
+thickness = 0.3
+
+[window]
+padding = { x = 20, y = 20 }
+
+[font]
+size = 20
+normal = { family = "Hack Nerd Font", style = "Regular" }
+bold = { family = "Hack Nerd Font", style = "Bold" }
+italic = { family = "Hack Nerd Font", style = "Italic" }
+bold_italic = { family = "Hack Nerd Font", style = "Bold Italic" }
+

@@ -1,0 +1,12 @@
+[submodule "zsh/dot-config/zsh/plugins/zsh-autosuggestions"]
+	path = zsh/dot-config/zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/dot-config/zsh/plugins/zsh-history-substring-search"]
+	path = zsh/dot-config/zsh/plugins/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search
+[submodule "zsh/dot-config/zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/dot-config/zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "zsh/dot-config/zsh/plugins/zsh-z"]
+	path = zsh/dot-config/zsh/plugins/zsh-z
+	url = https://github.com/agkozak/zsh-z.git
