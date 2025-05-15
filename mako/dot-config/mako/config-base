@@ -1,2 +1,7 @@
 default-timeout=6000
 max-visible=3
+
+[mode=do-not-disturb]
+invisible=1
+
+[mode=default]
