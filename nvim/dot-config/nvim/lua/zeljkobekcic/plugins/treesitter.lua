@@ -28,6 +28,8 @@ return {
         'markdown',
         'gdscript', 'godot_resource', 'gdshader',
         'rust',
+        'javascript',
+        'c_sharp',
       },
       auto_install = true,
       highlight = {
