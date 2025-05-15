@@ -19,12 +19,12 @@ set $displaySide 'Dell Inc. DELL S2722QC 505QLD3'
 
 output $displayMain resolution 3840x2160
 output $displayMain scale 1.25
-output $displayMain position 3075 0
+output $displayMain position 0 0
 
-output $displaySide transform 270
+output $displaySide transform 90
 output $displaySide scale 1.25
 output $displaySide resolution 3840x2160
-output $displaySide position 0 0 
+output $displaySide position 3072 0 
 
 bindsym $mod+Return exec $term
 bindsym $mod+Shift+q kill
@@ -189,7 +189,7 @@ for_window [app_id="flameshot"] border pixel 0, floating enable, fullscreen disa
 for_window [title="(?:Open|Save) (?:File|Folder|As)"] floating enable, resize set width 1080 height 1080
 
 assign [app_id="org.keepassxc.KeePassXC"] 9
-assign [app_id="Slack"] 10
+assign [instance="slack"] 10
 
 seat seat0 xcursor_theme Banana 48
 
