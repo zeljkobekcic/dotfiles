@@ -30,6 +30,7 @@ return {
     formatters_by_ft = {
       c = { 'clang-format' },
       markdown = { 'prettier' },
+      python = { 'ruff', 'black' }
     },
   },
 }
