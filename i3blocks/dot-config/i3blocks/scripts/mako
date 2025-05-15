@@ -1,0 +1,45 @@
+#!/bin/bash
+
+currentState="$(makoctl mode)"
+
+function printBlock() {
+    case "$currentState" in
+
+    do-not-disturb)
+        echo "${LABEL} 🔔"
+        ;;
+
+    default)
+        echo "${LABEL} 🔕 "
+        ;;
+
+    *)
+        echo "${LABEL} 🚨"
+        ;;
+    esac
+}
+
+function toggleMakoStage() {
+    case "$currentState" in
+
+    do-not-disturb)
+        notify-send "Mako: do-not-disturb -> default"
+        makoctl mode -s "default" >/dev/null
+        ;;
+
+    default)
+        notify-send "default -> do-not-disturb"
+        makoctl mode -s "do-not-disturb" >/dev/null
+        ;;
+
+    *)
+        notify-send "Unkown state"
+        ;;
+    esac
+}
+
+if [ ! -e "$BUTTON" ]; then
+    toggleMakoStage
+fi
+
+printBlock

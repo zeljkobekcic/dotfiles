@@ -1,6 +1,10 @@
 command=~/.config/i3blocks/scripts/$BLOCK_NAME
 separator_block_width=30
 
+[mako]
+LABEL=Mako
+interval=once
+
 [bandwidth]
 interval=10
 INTERFACE=enp6s0
