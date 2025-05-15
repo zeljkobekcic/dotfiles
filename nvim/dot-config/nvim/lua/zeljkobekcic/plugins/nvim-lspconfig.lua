@@ -116,6 +116,7 @@ return { -- LSP Configuration & Plugins
       dockerls = {},
       bashls = {},
       gopls = {},
+      omnisharp = {},
       golangci_lint_ls = {},
       powershell_es = {},
       jsonls = {},
