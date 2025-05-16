@@ -5,7 +5,7 @@ export XDG_CURRENT_DESKTOP=sway
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 
-export BROWSER=firefox
+export BROWSER=chromium
 
 export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
 
