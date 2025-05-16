@@ -4,9 +4,9 @@ packages=(
 	base-devel
 	linux 
 	linux-firmware
-	amd-ucode
-	lvm2 
-	cryptsetup
+	# amd-ucode
+	# lvm2 
+	# cryptsetup
 
 	# certificates
 	ca-certificates
@@ -66,8 +66,8 @@ packages=(
 
 	# virtualization stuff
 	docker
-	qemu-full
-	virt-manager # mange VMs via GUI
+	# qemu-full
+	# virt-manager # mange VMs via GUI
 
 	# enable for user by running
 	# systemctl --user enable syncthing.service

@@ -8,3 +8,5 @@ yay -S --needed golangci-lint
 yay -S --needed azure-cli
 
 yay -S --needed grimshot-bin-sway
+
+yay -S --needed ttf-hack-nerd
