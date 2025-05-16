@@ -3,7 +3,7 @@ separator_block_width=30
 
 [bandwidth]
 interval=10
-INTERFACE=enp6s0
+INTERFACE=eth0
 INLABEL= 
 OUTLABEL= 
 
