@@ -3,7 +3,7 @@
 
 * {
   font-family: "Hack Nerd Font Mono Regular";
-  font-size: 14px;
+  font-size: 16px;
   min-height: 0;
 }
 
@@ -13,7 +13,6 @@
 }
 
 #workspaces {
-  background-color: @surface0;
   padding: 0 0.5rem;
 }
 
@@ -22,8 +21,9 @@
   padding: 0 0.5rem;
 }
 
-#workspaces button.active {
-  color: @sky;
+#workspaces button.visible{
+  color: @base;
+  background-color: @green;
 }
 
 #workspaces button:hover {
