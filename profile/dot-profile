@@ -5,10 +5,9 @@ export XDG_CURRENT_DESKTOP=sway
 export SDL_VIDEODRIVER=wayland
 export _JAVA_AWT_WM_NONREPARENTING=1
 
+export QT_QPA_PLATFORM=wayland
+#export QT_SCALE_FACTOR=1.5
+
 export BROWSER=chromium
 
-export __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/50_mesa.json
-
-#export QT_QPA_PLATFORM=wayland
-#export QT_SCALE_FACTOR=1.5
 
