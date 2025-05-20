@@ -147,23 +147,7 @@ bindsym $mod+$alt+s mode "$mode_screenshot"
 include ./colors
 
 bar {
-    position top
-
-    font pango: Hack Nerd Font Mono Regular 12
-
-    status_command i3blocks
-
-    colors {
-        background         $base
-        statusline         $text
-        focused_statusline $text
-        focused_separator  $base
-
-        focused_workspace  $base  $mauve    $crust
-        active_workspace   $base  $surface2 $text
-        inactive_workspace $base  $base     $text
-        urgent_workspace   $base  $red      $crust
-    }
+    swaybar_command waybar
 }
 
 # target                 title     bg        text   indicator  border
@@ -179,6 +163,7 @@ default_border normal 5
 exec --no-startup-id mako
 exec --no-startup-id keepassxc
 exec --no-startup-id udiskie
+exec --no-startup-id nm-applet
 
 for_window [window_role = "pop-up"] floating enable
 for_window [window_role = "bubble"] floating enable

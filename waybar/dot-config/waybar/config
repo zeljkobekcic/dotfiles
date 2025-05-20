@@ -1,0 +1,152 @@
+{
+    "layer": "top", 
+    "position": "top", 
+    "spacing": 15, 
+
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode",
+        "sway/window"
+    ],
+
+    "sway/workspaces": {
+        "disable-scroll": true,
+        "all-outputs": false,
+         "format": "{icon}"
+    },
+
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>",
+        "tooltip": false
+    },
+
+    "sway/window": {
+        "format": "{}",
+        "max-length": 120
+    },
+
+    "modules-center": [
+        "network",
+        "idle_inhibitor"
+    ],
+
+    "network": {
+        "format-disabled": " Disabled",
+        "format-wifi": " {bandwidthDownBits:>} 󰶡 {bandwidthUpBits:>} 󰶣",
+        "tooltip-format-wifi": "{essid}",
+        "format-ethernet": "󰈀 {bandwidthDownBits:>} 󰶡 {bandwidthUpBits:>} 󰶣",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": " Disconnected",
+        "interval": 10
+    },
+
+    "modules-right": [
+		"temperature",
+        "cpu",
+        "memory",
+        "backlight",
+        "pulseaudio",
+        "battery",
+        "clock",
+        "tray",
+    ],
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip-format-activated": "Idle Inhibitor Activated",
+        "tooltip-format-deactivated": "Idle Inhibitor Deactivated"
+    },
+
+
+    "temperature": {
+        "format": "{temperatureC}°C "
+    },
+
+    "cpu": {
+        "interval": 5,
+        "format": "{usage:>3}%",
+        "states": {
+            "warning": 70,
+            "critical": 90,
+        }
+    },
+    
+    "memory": {
+        "interval": 5,
+        "format": " {:>3}%",
+        "on-click": "footclient -T waybar_htop -e htop", 
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["󰄰", "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥"],
+        "tooltip-format": "Backlight (Scroll): {percent:}%",
+        "on-scroll-down": "brightnessctl -c backlight set 5%-",
+        "on-scroll-up": "brightnessctl -c backlight set +5%"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 2,
+        "format": "{icon} {volume}%",
+        "format-muted":"󰝟 muted",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "clock": {
+        "format": "󰅐 {:%H:%M}",
+        "format-alt": "󰅐 {:%OI:%M %p}",
+        "tooltip-format": " {:%A %m/%d}\n\n<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "on-scroll": 1,
+            "format": {
+                "months":     "<span color='#ffead3'><b>{}</b></span>",
+                "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+                "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+            },
+        },
+        "actions": {
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        },
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing":10
+     },
+
+
+    // "custom/power": {
+    //     "format":"⏻",
+    //     "on-click": "exec ~/.config/sway/scripts/power_menu.sh",
+    //     "tooltip": false
+    // },
+}

@@ -1,0 +1,86 @@
+@import "catpuccin-latte.css";
+/* @import "catpuccin-mocha.css"; */
+
+* {
+  font-family: "Hack Nerd Font Mono Regular";
+  font-size: 14px;
+  min-height: 0;
+}
+
+#waybar {
+  background: @base;
+  color: @text;
+}
+
+#workspaces {
+  background-color: @surface0;
+  padding: 0 0.5rem;
+}
+
+#workspaces button {
+  color: @lavender;
+  padding: 0 0.5rem;
+}
+
+#workspaces button.active {
+  color: @sky;
+}
+
+#workspaces button:hover {
+  color: @sapphire;
+}
+
+#tray,
+#backlight,
+#clock,
+#battery,
+#pulseaudio,
+#network,
+#memory,
+#cpu,
+#temperature,
+#idle_inhibitor {
+  background-color: @surface0;
+  padding: 0.25rem 0.5rem;
+}
+
+#idle_inhibitor {
+		color: @teal;
+}
+
+#clock {
+  color: @blue;
+  margin-right: 1rem;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging {
+  color: @green;
+}
+
+#battery.warning:not(.charging) {
+  color: @red;
+}
+
+#backlight {
+  color: @yellow;
+}
+
+#backlight, #battery {
+    border-radius: 0;
+}
+
+#pulseaudio {
+  color: @maroon;
+}
+
+#tray {
+  margin-right: 1rem;
+}
+
+#temperature {
+    color: @flamingo;
+}
