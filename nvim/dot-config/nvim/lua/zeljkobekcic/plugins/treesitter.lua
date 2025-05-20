@@ -24,6 +24,7 @@ return {
         'dockerfile',
         'devicetree',
         'json',
+        'jsonc',
         'yaml',
         'markdown',
         'gdscript', 'godot_resource', 'gdshader',
