@@ -119,7 +119,7 @@
     },
 
     "clock": {
-        "format": "󰅐 {:%H:%M}",
+		"format": "{:%Y-%m-%d  %H:%M} 󰅐",
         "format-alt": "󰅐 {:%OI:%M %p}",
         "tooltip-format": " {:%A %m/%d}\n\n<tt><small>{calendar}</small></tt>",
         "calendar": {
