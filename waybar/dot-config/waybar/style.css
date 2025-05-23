@@ -39,7 +39,8 @@
 #memory,
 #cpu,
 #temperature,
-#idle_inhibitor {
+#idle_inhibitor,
+#custom-mako {
   background-color: @surface0;
   padding: 0.25rem 0.5rem;
 }
